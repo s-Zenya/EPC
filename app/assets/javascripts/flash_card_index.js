@@ -1,7 +1,7 @@
 function createCard(data) { //データを受け取りカードを生成
     $(".mdl-layout__content").empty();
     for (var i in data) {
-        $(".mdl-layout__content").append("<div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
+        $(".mdl-layout__content").append("<div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><i class='material-icons'>&#xE037;</i><i class='material-icons'>mic</i><p class='e_w'>" +
             data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>");
         componentHandler.upgradeDom();
     }
