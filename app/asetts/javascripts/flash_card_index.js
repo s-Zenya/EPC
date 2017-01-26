@@ -147,7 +147,7 @@ $(document).ready(function() {
     loadSection('./json/practice_1.json');
 });
 
-$(document).on('click','.e_card', function() {
+$('.e_card').live('click', function() {
 
     if ($(".j_w", this).is(':hidden')) {
         $(".j_w", this).css("display", "block");

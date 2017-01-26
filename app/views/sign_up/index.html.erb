@@ -1,2 +1,12 @@
-<strong>Sir! Here was sign_up page!</strong>
-<p>but now… here is ruined by massive flood...</p>
+<strong>会員登録</strong>
+<%= form_tag  do %>
+<div class="ルーティング名">
+  User Name<%= text_field_tag :name, @user.name %><br>
+  Pass<%= text_field_tag :pass, @user.pass %><br>
+  mail<%= text_field_tag :mail, @user.mail %><br>
+</div>
+  <div class = "submit mdl-button mdl-js-button mdl-button--accent">
+    <%= submit_tag("done!") %>
+  </div>
+  <% end %>
+</div>
