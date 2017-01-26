@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170126060308) do
   create_table "words", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal  "Fileid"
+    t.integer  "Fileid"
     t.string   "English"
     t.string   "Japanese"
     t.boolean  "Weak"
