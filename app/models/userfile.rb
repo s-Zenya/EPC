@@ -1,0 +1,2 @@
+class Userfile < ApplicationRecord
+end

@@ -10,11 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125064816) do
+ActiveRecord::Schema.define(version: 20170126060308) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "userfiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "filename"
+    t.integer  "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_userfiles_on_user_id"
+    t.index ["word_id"], name: "index_userfiles_on_word_id"
+    t.index [nil, "filename"], name: "index_userfiles_on_user_and_filename"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "Username"
+    t.string   "Userpassword"
+    t.string   "Useraddress"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal  "Fileid"
+    t.string   "English"
+    t.string   "Japanese"
+    t.boolean  "Weak"
   end
 
 end
