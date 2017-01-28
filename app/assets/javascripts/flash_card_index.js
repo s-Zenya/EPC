@@ -19,7 +19,7 @@ function createCard(data) { //データを受け取りカードを生成
     $(".mdl-layout__content").empty();
     for (var i in data) {
       var correct_word = data[i].e_word;
-        $(".mdl-layout__content").append("<button class='mic' onClick='hoge("  &quot;correct_word&quot;  ")'>\
+        $(".mdl-layout__content").append("<button class='mic' onClick='hoge('" + correct_word + "')'>\
                       <i class='material-icons'>mic</i></button>\
         <div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'>\
             <i class='material-icons'>&#xE037;</i>\
