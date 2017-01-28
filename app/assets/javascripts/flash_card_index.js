@@ -31,88 +31,10 @@ function shuffleFileCards(){ //カードのシャッフル
   createCard(file_data);
 }
 
-function splitByLine(text_name) { //exportフォームの入力値を改行で分ける
-    var text = document.getElementById(text_name).value.replace(/\r\n|\r/g, "\n");
-    var lines = text.split('\n');
-    var outArray = new Array();
 
-    for (var i = 0; i < lines.length; i++) {
-        // 空行は無視する
-        if (lines[i] == '') {
-            continue;
-        }
-        outArray.push(lines[i]);
-    }
-    return outArray;
-}
 
-function createJson() { //exportフォームでJsonファイルを作成
-  var data = new Array();
-    english_words = splitByLine('english');
-    japanese_words = splitByLine('japanese');
 
-    for (i = 0; i < english_words.length && i < japanese_words.length; i++) {
-        data[i] = {
-            "e_word": "",
-            "j_word": ""
-        }
 
-        data[i].e_word = english_words[i];
-        data[i].j_word = japanese_words[i];
-    }
-
-    data = JSON.stringify(data); //objectを文字列に変換する関数
-    var blob = new Blob([data], {
-        type: "text/json"
-    });
-    var file_title;
-    // if(document.querySelector('#textbox_1').value != ''){　//textbox_1に何も入力されていないと実行できないようにするif文
-    file_title = document.getElementById("title").value + ".json"; //ここを書き換えることでダウンロードリンクのタイトルが変わる
-    // }
-    if (file_title == ".json") {
-        file_title = "your_english_words.json"
-    }
-    if (window.navigator.msSaveBlob) {
-        window.navigator.msSaveBlob(blob, file_title);
-        window.navigator.msSaveOrOpenBlob(blob, file_title);
-    } else {
-        window.URL = window.URL || window.webkitURL;
-        var links = document.querySelector(".form");
-        var temp = document.createElement("a");
-        temp.innerHTML = file_title;
-        temp.href = window.URL.createObjectURL(blob);
-        temp.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent");
-        temp.setAttribute("download", file_title);
-        links.removeChild(links.lastElementChild);
-        links.appendChild(temp);
-    }
-    // componentHandler.upgradeDom();
-}
-
-function createForm() { //Exportフォーム
-    $(".mdl-layout__content").empty();
-    $(".mdl-layout__content").append('<div class="form">以下に英語とそれの日本語訳を記入し自分のフラッシュカードを作成できます<br>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <input class="mdl-textfield__input" type="text" id="title">\
-                                          <label class="mdl-textfield__label" for="title">保存するタイトル名</label>\
-                                        </div></br>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english"></textarea>\
-                                          <label class="mdl-textfield__label" for="english">_______ please write English here...</label>\
-                                        </div>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese"></textarea>\
-                                          <label class="mdl-textfield__label" for="japaese">_______ please write Japanese here...</label>\
-                                        </div></br>\
-                                        <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成></br></br></br>\
-                                      </div>');
-    componentHandler.upgradeDom();
-
-    $(function() { //テキストエリアに行番号とハイライトの追加
-    	$(".lined").linedtextarea(
-    	);
-    });
-}
 
 function chooseJson() {
     $(".mdl-layout__content").empty();
@@ -160,15 +82,29 @@ $(document).on('click','.e_card', function() {
 
 
 
-
-// //音声を再生
+// メニューの発音チェック
+$(document).on('click','.vocalization_button',function(){
+  console.log(document.getElementById('vocalization').value);
+  var e_text=this.id;
+  var synthes = new SpeechSynthesisUtterance();
+  synthes.voiceURI = 'native';
+  synthes.volume = 1;
+  synthes.rate = 1;
+  synthes.pitch = 1;
+  synthes.text = (document.getElementById('vocalization').value);
+  synthes.lang = 'en';
+  synthes.onend = function(e) {
+  };
+  speechSynthesis.speak(synthes);
+})
+//カードの音声を再生
 $(document).on('click','.play',function(){
   console.log("aaaaa");
   var e_text=this.id;
   var synthes = new SpeechSynthesisUtterance();
   synthes.voiceURI = 'native';
   synthes.volume = 1;
-  synthes.rate = 1;
+  synthes.rate = 0.8;
   synthes.pitch = 1;
   synthes.text = e_text;
   synthes.lang = 'en';
