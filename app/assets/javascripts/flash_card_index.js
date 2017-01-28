@@ -1,9 +1,9 @@
 function createCard(data) { //データを受け取りカードを生成
     $(".mdl-layout__content").empty();
     for (var i in data) {
-        $(".mdl-layout__content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w w_e_"+i+"'>" +
+        $(".mdl-layout__content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p name='w_e_"+i+"' class='e_w w_e_"+i+"'>" +
             data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>"
-            +"<i class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
+            +"<i id='"+data[i].e_word+"'' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
             +"<i class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>");
         componentHandler.upgradeDom();
     }
@@ -164,12 +164,13 @@ $(document).on('click','.e_card', function() {
 // //音声を再生
 $(document).on('click','.play',function(){
   console.log("aaaaa");
+  var e_text=this.id;
   var synthes = new SpeechSynthesisUtterance();
   synthes.voiceURI = 'native';
   synthes.volume = 1;
   synthes.rate = 1;
-  synthes.pitch = 2;
-  synthes.text = "";
+  synthes.pitch = 1;
+  synthes.text = e_text;
   synthes.lang = 'en';
   synthes.onend = function(e) {
   };
