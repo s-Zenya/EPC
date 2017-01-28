@@ -1,8 +1,30 @@
+function hoge(correct_word){
+  alert(correct_word)
+  window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+  var recognition = new webkitSpeechRecognition();
+  recognition.lang = 'en';
+
+  // 録音終了時トリガー
+  recognition.addEventListener('result', function(event){
+  var reserved_word = event.results.item(0).item(0)
+      alert(reserved_word.transcript + '(' + reserved_word.confidence + ')')
+  }, false);
+
+  // 録音開始
+  recognition.start();
+}
+
+//------------------------------------------------------------------------------------
 function createCard(data) { //データを受け取りカードを生成
     $(".mdl-layout__content").empty();
     for (var i in data) {
-        $(".mdl-layout__content").append("<div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><i class='material-icons'>&#xE037;</i><i class='material-icons'>mic</i><p class='e_w'>" +
-            data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>");
+      var correct_word = data[i].e_word;
+        $(".mdl-layout__content").append("<button class='mic' onClick='hoge("  &quot;correct_word&quot;  ")'>\
+                      <i class='material-icons'>mic</i></button>\
+        <div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'>\
+            <i class='material-icons'>&#xE037;</i>\
+            <p class='e_w'>" +
+              data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>");
         componentHandler.upgradeDom();
     }
 }
