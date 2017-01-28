@@ -1,32 +1,13 @@
-function hoge(correct_word){
-  alert(correct_word)
-  window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-  var recognition = new webkitSpeechRecognition();
-  recognition.lang = 'en';
-
-  // 録音終了時トリガー
-  recognition.addEventListener('result', function(event){
-  var reserved_word = event.results.item(0).item(0)
-      alert(reserved_word.transcript + '(' + reserved_word.confidence + ')')
-  }, false);
-
-  // 録音開始
-  recognition.start();
-}
-
-//------------------------------------------------------------------------------------
 function createCard(data) { //データを受け取りカードを生成
-    $(".mdl-layout__content").empty();
+    $(".page-content").empty();
     for (var i in data) {
-      var correct_word = data[i].e_word;
-        $(".mdl-layout__content").append("<button class='mic' onClick='hoge('" + correct_word + "')'>\
-                      <i class='material-icons'>mic</i></button>\
-        <div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'>\
-            <i class='material-icons'>&#xE037;</i>\
-            <p class='e_w'>" +
-              data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>");
-        componentHandler.upgradeDom();
-    }
+        $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
+            data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>"
+            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
+            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
+            );
+      }
+      componentHandler.upgradeDom();
 }
 
 function loadSection(name) { //jsonファイルの名前を基にデータを作る
@@ -51,92 +32,9 @@ function shuffleFileCards(){ //カードのシャッフル
   createCard(file_data);
 }
 
-function splitByLine(text_name) { //exportフォームの入力値を改行で分ける
-    var text = document.getElementById(text_name).value.replace(/\r\n|\r/g, "\n");
-    var lines = text.split('\n');
-    var outArray = new Array();
-
-    for (var i = 0; i < lines.length; i++) {
-        // 空行は無視する
-        if (lines[i] == '') {
-            continue;
-        }
-        outArray.push(lines[i]);
-    }
-    return outArray;
-}
-
-function createJson() { //exportフォームでJsonファイルを作成
-  var data = new Array();
-    english_words = splitByLine('english');
-    japanese_words = splitByLine('japanese');
-
-    for (i = 0; i < english_words.length && i < japanese_words.length; i++) {
-        data[i] = {
-            "e_word": "",
-            "j_word": ""
-        }
-
-        data[i].e_word = english_words[i];
-        data[i].j_word = japanese_words[i];
-    }
-
-    data = JSON.stringify(data); //objectを文字列に変換する関数
-    var blob = new Blob([data], {
-        type: "text/json"
-    });
-    var file_title;
-    // if(document.querySelector('#textbox_1').value != ''){　//textbox_1に何も入力されていないと実行できないようにするif文
-    file_title = document.getElementById("title").value + ".json"; //ここを書き換えることでダウンロードリンクのタイトルが変わる
-    // }
-    if (file_title == ".json") {
-        file_title = "your_english_words.json"
-    }
-    if (window.navigator.msSaveBlob) {
-        window.navigator.msSaveBlob(blob, file_title);
-        window.navigator.msSaveOrOpenBlob(blob, file_title);
-    } else {
-        window.URL = window.URL || window.webkitURL;
-        var links = document.querySelector(".form");
-        var temp = document.createElement("a");
-        temp.innerHTML = file_title;
-        temp.href = window.URL.createObjectURL(blob);
-        temp.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent");
-        temp.setAttribute("download", file_title);
-        links.removeChild(links.lastElementChild);
-        links.appendChild(temp);
-    }
-    // componentHandler.upgradeDom();
-}
-
-function createForm() { //Exportフォーム
-    $(".mdl-layout__content").empty();
-    $(".mdl-layout__content").append('<div class="form">以下に英語とそれの日本語訳を記入し自分のフラッシュカードを作成できます<br>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <input class="mdl-textfield__input" type="text" id="title">\
-                                          <label class="mdl-textfield__label" for="title">保存するタイトル名</label>\
-                                        </div></br>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english"></textarea>\
-                                          <label class="mdl-textfield__label" for="english">_______ please write English here...</label>\
-                                        </div>\
-                                        <div class="mdl-textfield mdl-js-textfield">\
-                                          <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese"></textarea>\
-                                          <label class="mdl-textfield__label" for="japaese">_______ please write Japanese here...</label>\
-                                        </div></br>\
-                                        <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成></br></br></br>\
-                                      </div>');
-    componentHandler.upgradeDom();
-
-    $(function() { //テキストエリアに行番号とハイライトの追加
-    	$(".lined").linedtextarea(
-    	);
-    });
-}
-
 function chooseJson() {
-    $(".mdl-layout__content").empty();
-    $(".mdl-layout__content").append('<div class="form">\
+    $(".page-content").empty();
+    $(".page-content").append('<div class="form">\
                                         <label for="file" class="file"> \
                                           <input type="file" name="file" value="" id="file"></br>\
                                           <div class="mdl-button mdl-js-button mdl-button--accent">ファイルを選択して決定をクリック</div>\
@@ -177,3 +75,72 @@ $(document).on('click','.e_card', function() {
         $(".j_w", this).css("display", "none");
     }
 });
+
+
+
+// メニューの発音チェック
+$(document).on('click','.vocalization_button',function(){
+  console.log(document.getElementById('vocalization').value);
+  var e_text=this.id;
+  var synthes = new SpeechSynthesisUtterance();
+  synthes.voiceURI = 'native';
+  synthes.volume = 1;
+  synthes.rate = 1;
+  synthes.pitch = 1;
+  synthes.text = (document.getElementById('vocalization').value);
+  synthes.lang = 'en';
+  synthes.onend = function(e) {
+  };
+  speechSynthesis.speak(synthes);
+})
+//カードの音声を再生
+$(document).on('click','.play',function(){
+  console.log("aaaaa");
+  var e_text=this.id;
+  var synthes = new SpeechSynthesisUtterance();
+  synthes.voiceURI = 'native';
+  synthes.volume = 1;
+  synthes.rate = 0.8;
+  synthes.pitch = 1;
+  synthes.text = e_text;
+  synthes.lang = 'en';
+  synthes.onend = function(e) {
+  };
+  speechSynthesis.speak(synthes);
+})
+
+//録音採点機能
+$(document).on('click','.mic',function(){
+  window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+  var recognition = new webkitSpeechRecognition();
+  recognition.lang = 'en';
+  var correct_word = this.id;
+  // 録音終了時トリガー
+  recognition.addEventListener('result', function(event){
+    var reserved_word = event.results.item(0).item(0)
+    // //スナックバー表示
+    'use strict';
+    var snackbarContainer = document.querySelector('#demo-toast-example');
+    var showToastButton = document.querySelector('#demo-show-toast');
+    var data = {
+      message: reserved_word.transcript + '(' + Math.round(reserved_word.confidence * 10000) / 100 + 'Pt' + ')',
+      timeout: 3000
+    };
+    if(reserved_word.transcript == correct_word){
+      if(reserved_word.confidence > 0.8){
+        $("'." + correct_word + "'").css("background-color", "green");
+        console.log("い")
+      }else if(reserved_word.confidence > 0.5){
+        $("'." + correct_word + "'").css("background-color", "yellow");
+        console.log("ろ")
+      }else{
+        $("'." + correct_word + "'").css("background-color", "red");
+        console.log("は")
+      }
+    }
+    snackbarContainer.MaterialSnackbar.showSnackbar(data);
+  }, false);
+
+  // 録音開始
+  recognition.start();
+})

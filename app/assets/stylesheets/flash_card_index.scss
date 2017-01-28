@@ -3,6 +3,9 @@ html {
     margin: 0;
 }
 
+.vocalization{
+  margin-right: 20px;
+}
 #small_title{
   display: none;
 }
@@ -12,7 +15,7 @@ i{
 .c_box{
     height: 220px;
     width: 44%;
-    margin: 0px 3% 30px 3%;
+    margin: 30px 3% 30px 3%;
     float: left;
 
 }
@@ -67,18 +70,11 @@ form textarea {
     .c_box{
               margin: 90px auto 0 40px;
     }
-    main .e_card {
-    }
 }
 
 @media(max-width:800px) {
-
-    main .e_card {
-    }
     .c_box{
       width: 80%;
-      // margin: 0px 30px 0 40px;
-
     }
     .e_w {
         padding-top: 25px;
@@ -90,13 +86,10 @@ form textarea {
     }
     .e_card{
       width: 100%;
-      // margin: 45px 20px 25px 20px;
-
     }
     #big_title{
       display: none;
     }
-
     #small_title{
       display: block;
     }
