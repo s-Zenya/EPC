@@ -126,18 +126,20 @@ $(document).on('click','.mic',function(){
       message: reserved_word.transcript + '(' + Math.round(reserved_word.confidence * 10000) / 100 + 'Pt' + ')',
       timeout: 3000
     };
-    if(reserved_word.transcript == correct_word){
-      if(reserved_word.confidence > 0.8){
-        $("'." + correct_word + "'").css("background-color", "green");
-        console.log("い")
-      }else if(reserved_word.confidence > 0.5){
-        $("'." + correct_word + "'").css("background-color", "yellow");
-        console.log("ろ")
-      }else{
-        $("'." + correct_word + "'").css("background-color", "red");
-        console.log("は")
-      }
-    }
+    //点数によって背景の色変える処理
+    //現状カードの色とか変えるの結構大変なんで保留(録音と再生機能カード内部に入れ込めたら楽かも)
+    // if(reserved_word.transcript == correct_word){
+    //   if(reserved_word.confidence > 0.8){
+    //     $().css("background-color", "green");
+    //     console.log("い")
+    //   }else if(reserved_word.confidence > 0.5){
+    //     $().css("background-color", "yellow");
+    //     console.log("ろ")
+    //   }else{
+    //     $().css("background-color", "red");
+    //     console.log("は")
+    //   }
+    // }
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }, false);
 
