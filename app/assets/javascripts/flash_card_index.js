@@ -1,7 +1,7 @@
 function createCard(data) { //データを受け取りカードを生成
     $(".mdl-layout__content").empty();
     for (var i in data) {
-        $(".mdl-layout__content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p name='w_e_"+i+"' class='e_w w_e_"+i+"'>" +
+        $(".mdl-layout__content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
             data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>"
             +"<i id='"+data[i].e_word+"'' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
             +"<i class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>");
