@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170201063136) do
 
   create_table "userfiles", force: :cascade do |t|
@@ -29,8 +28,6 @@ ActiveRecord::Schema.define(version: 20170201063136) do
     t.string   "Username"
     t.string   "Userpassword"
     t.string   "Useraddress"
-    t.string   "password"
-    t.string   "mail"
   end
 
   create_table "words", force: :cascade do |t|

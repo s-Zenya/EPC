@@ -1,4 +1,4 @@
-<%= form_for(:user_params) do |f| %>
+<%= form_for(@user) do |f| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,6 +14,6 @@
     User Name<%= f.text_field :Username %><br>
     Pass<%= f.text_field :Userpassword %><br>
     mail<%= f.text_field :Useraddress %><br>
-    juyhgugi    <%= f.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
