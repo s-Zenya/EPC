@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170126060308) do
+ActiveRecord::Schema.define(version: 20170201063136) do
 
   create_table "userfiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "filename"
-    t.integer  "word_id"
+    t.integer  "fileid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id", "filename"], name: "index_userfiles_on_id_and_filename", unique: true
     t.index ["user_id"], name: "index_userfiles_on_user_id"
-    t.index ["word_id"], name: "index_userfiles_on_word_id"
-    t.index [nil, "filename"], name: "index_userfiles_on_user_and_filename"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,10 +33,10 @@ ActiveRecord::Schema.define(version: 20170126060308) do
   create_table "words", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal  "Fileid"
     t.string   "English"
     t.string   "Japanese"
     t.boolean  "Weak"
+    t.integer  "fileid"
   end
 
 end

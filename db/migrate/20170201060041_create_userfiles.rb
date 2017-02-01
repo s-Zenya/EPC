@@ -3,10 +3,10 @@ class CreateUserfiles < ActiveRecord::Migration[5.0]
     create_table :userfiles do |t|
       t.references :user, foreign_key: true
       t.string :filename
-      t.references :word, foreign_key: true
+      t.integer :fileid
 
       t.timestamps
     end
-    add_index :userfiles, [:user, :filename]
+      add_index :userfiles, [:id, :filename], unique: true
   end
 end
