@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'import' => 'import#index'
   get 'export' => 'export#index'
   get 'sign_up' => 'users#new'
-
+  
   # ログイン処理
   namespace :user do
     get    :sign_in,  to: 'session#new'
