@@ -128,18 +128,21 @@ $(document).on('click','.mic',function(){
     };
     //点数によって背景の色変える処理
     //現状カードの色とか変えるの結構大変なんで保留(録音と再生機能カード内部に入れ込めたら楽かも)
-    // if(reserved_word.transcript == correct_word){
-    //   if(reserved_word.confidence > 0.8){
-    //     $().css("background-color", "green");
-    //     console.log("い")
-    //   }else if(reserved_word.confidence > 0.5){
-    //     $().css("background-color", "yellow");
-    //     console.log("ろ")
-    //   }else{
-    //     $().css("background-color", "red");
-    //     console.log("は")
-    //   }
-    // }
+    if(reserved_word.transcript == correct_word){
+      if(reserved_word.confidence > 0.85){
+        data.message += "  Perfect!!"
+        console.log("い")
+      }else if(reserved_word.confidence > 0.65){
+        data.message += "  Good"
+        console.log("ろ")
+      }else if(reserved_word.confidence > 0.45){
+        data.message += "  Nice"
+        console.log("は")
+        }
+        else{
+          data.message += "  Bad…"
+        }
+      }
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }, false);
 
