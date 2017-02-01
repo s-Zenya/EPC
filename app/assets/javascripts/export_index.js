@@ -41,6 +41,11 @@ function createJson() { //exportフォームでJsonファイルを作成
     // componentHandler.upgradeDom();
 }
 
+function CardsToDb() { //exportフォームでDBにカードを保存
+  var data = new Array();
+    english_words = splitByLine('english');
+    japanese_words = splitByLine('japanese');
+
 
  $(function() {
  	$(".lined").linedtextarea(

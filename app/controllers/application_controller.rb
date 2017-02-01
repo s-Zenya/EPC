@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  protect_from_forgery with: :exception
   helper_method :current_user
+  before_action :authenticate
 
   def current_user
     if session[:user_id].present?
@@ -16,4 +15,11 @@ class ApplicationController < ActionController::Base
     payload[:username] = current_user.try(:username)
     payload[:userpass] = current_user.try(:userpass)
   end
+
+  private
+   def authenticate
+     if current_user.blank? #userが存在するかの確認
+       session.delete :user_id
+     end
+   end
 end

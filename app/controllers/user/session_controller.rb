@@ -1,5 +1,4 @@
 class User::SessionController < ApplicationController
-  before_action :authenticate
   skip_before_action :authenticate, except: :show
 
   def show

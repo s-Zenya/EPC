@@ -22,5 +22,10 @@
     <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese"></textarea>
     <label class="mdl-textfield__label" for="japaese">　　　　please write Japanese here...</label>
   </div></br>
-  <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成></br></br></br>
+  <% if current_user.blank? #userが存在するかの確認 %>
+  <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成>
+  <% else %>
+  <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=DBに保存>
+  <% end %>
+</br></br></br>
 </div>
