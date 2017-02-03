@@ -18,7 +18,9 @@
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title" id="big_title">EPC</span>
+        <span class="mdl-layout-title" id="big_title">
+          <a href="/top" class="header_title">EPC</a>
+        </span>
         <div class="mdl-layout-spacer"></div>
         <input id="vocalization" class="vocalization" type="text" size="30"></form>
         <div class="vocalization_button mdl-button mdl-js-button mdl-button--raised">Play</div>
@@ -41,7 +43,7 @@
       <nav class="mdl-navigation">
         <!-- ここでメニューにファイル名を追加 -->
         <% for userfile in @userfiles %>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="<%=userfile.filename%>">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="<%=userfile.filename%>"
           <%= userfile.filename%></h1>
         </button>
         <% end %>

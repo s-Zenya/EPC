@@ -3,6 +3,13 @@ html {
     margin: 0;
 }
 
+.header_title{
+  text-decoration: none;
+}
+.header_title:link { color:#ffffff; text-decoration:none }
+.header_title:visited { color:#ffffff; text-decoration:none }
+.header_title:hover { color:#ffffff; text-decoration:none }
+.header_title:active { color:#ffffff; text-decoration:none }
 .vocalization{
   margin-right: 20px;
 }
