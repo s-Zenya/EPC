@@ -5,8 +5,12 @@
     <div class="mdl-layout-spacer"></div>
     <input id="vocalization" class="vocalization" type="text" size="30"></form>
     <div class="vocalization_button mdl-button mdl-js-button mdl-button--raised">Play</div>
-
-      <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
-
+    <!-- userが存在するかの確認 -->
+    <% if current_user.blank?  %>
+    <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+    <% else %>
+    <span><%= @user.Username%>さん</span>
+    <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+    <% end %>
   </div>
 </header>
