@@ -3,6 +3,7 @@ function createCard(data) { //データを受け取りカードを生成
     for (var i in data) {
         $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
             data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>"
+            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
             + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
             + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
             );
