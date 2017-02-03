@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- ヘッダー -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
@@ -26,6 +27,12 @@
             <i class="material-icons">shuffle</i>
           </a>
         </nav>
+        <% if current_user.blank? #userが存在するかの確認 %>
+        <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+        <% else %>
+        <span><%= @user.Username %>さん</span>
+        <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+        <% end %>
       </div>
     </header>
     <div class="mdl-layout__drawer">

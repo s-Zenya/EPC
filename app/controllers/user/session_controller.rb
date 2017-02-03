@@ -3,12 +3,15 @@ class User::SessionController < ApplicationController
   skip_before_action :authenticate, except: :show
 
   def show
+    @user=current_user
   end
 
   def new
+    @user=current_user
   end
 
   def create
+    @user=current_user
     user = User.find_by(user_params_name)
     if user.present?
       logger.debug("ooooooooooooooooooooooooooooooooooooooooooo"+user_params_password[:userpassword]+"QQQ")
@@ -24,6 +27,7 @@ class User::SessionController < ApplicationController
   end
 
   def destroy
+    @user=current_user
     session.delete :user_id
     redirect_to root_path
   end
