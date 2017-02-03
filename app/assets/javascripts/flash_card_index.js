@@ -11,6 +11,13 @@ function createCard(data) { //データを受け取りカードを生成
       componentHandler.upgradeDom();
 }
 
+function importFileName(){
+  for (var i in data) {
+      $(".page-content").append("");
+    }
+    componentHandler.upgradeDom();
+}
+
 function loadSection(name) { //jsonファイルの名前を基にデータを作る
   httpObj = new XMLHttpRequest();
     httpObj.open("get", name, true);
