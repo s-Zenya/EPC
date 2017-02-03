@@ -60,7 +60,7 @@ function CardsToDb() { //exportフォームでDBにカードを保存
   }).done(function(data){
     $('.form').append('<div>DB登録に成功しました<div>');
   }).fail(function(data){
-    $('.form').append('<div>DB登録に失敗しました<div>');
+    $('.form').append('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
   });
 }
 
