@@ -43,9 +43,26 @@ function createJson() { //exportフォームでJsonファイルを作成
 
 function CardsToDb() { //exportフォームでDBにカードを保存
   var data = new Array();
-    english_words = splitByLine('english');
-    japanese_words = splitByLine('japanese');
-
+  title = document.getElementById('title').value;
+  english_words = splitByLine('english');
+  japanese_words = splitByLine('japanese');
+  console.log(english_words)
+  $.ajax({
+    url: '/export/create',
+    type: 'POST',
+    dataType: 'json',
+    async: true,
+    data: {
+      title: title,
+      english_words: english_words,
+      japanese_words: japanese_words
+    },
+  }).done(function(data){
+    $('.form').append('<div>DB登録に成功しました<div>');
+  }).fail(function(data){
+    $('.form').append('<div>DB登録に失敗しました<div>');
+  });
+}
 
  $(function() {
  	$(".lined").linedtextarea(

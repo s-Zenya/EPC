@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20170201063136) do
   create_table "userfiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "filename"
-    t.integer  "fileid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id", "filename"], name: "index_userfiles_on_id_and_filename", unique: true
