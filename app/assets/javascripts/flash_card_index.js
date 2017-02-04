@@ -1,4 +1,5 @@
 function createCard(data) { //データを受け取りカードを生成
+  console.dir(data);
     $(".page-content").empty();
     for (var i in data) {
         $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
@@ -11,12 +12,49 @@ function createCard(data) { //データを受け取りカードを生成
       componentHandler.upgradeDom();
 }
 
+function findCards(filename){
+  // var file=this.id;
+  console.log(filename);
+  $.ajax({
+    url: '/flash_card/findCards',
+    type: 'POST',
+    dataType: 'text',
+    async: true,
+    data: {
+      filename
+    },
+  }).done(function(){
+    console.log("aaa");
+  }).fail(function(){
+    console.log("bbb");
+  });
+  componentHandler.upgradeDom();
+}
+
+function createDbCard(data){
+  $(".page-content").empty();
+  console.log("1");
+  console.dir(data);
+  for (var i in data) {
+    console.log("a");
+      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
+          data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
+          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
+          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
+          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
+          );
+    }
+    console.log("2");
+    componentHandler.upgradeDom();
+}
+
 function importFileName(){
   for (var i in data) {
       $(".page-content").append("");
     }
     componentHandler.upgradeDom();
 }
+
 
 function loadSection(name) { //jsonファイルの名前を基にデータを作る
   httpObj = new XMLHttpRequest();
