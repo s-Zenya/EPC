@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<h1><%= @aaa %></h1>
   <!-- ヘッダー -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
@@ -43,11 +43,11 @@
       <nav class="mdl-navigation">
         <!-- ここでメニューにファイル名を追加 -->
       <% for userfile in @userfiles %>
-      <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>');createDbCard('<%= @cards %>');">
+      <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>')">
       <%= userfile.filename %>
       </a>
       <% end %>
-      <a class="mdl-navigation__link" href="#" onClick="createDbCard('<%= @cards %>');">hoge-</a>
+      <a class="mdl-navigation__link" href="#" onClick="createCard();">hoge-</a>
 
       <% for userfile in @userfiles %>
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="<%=userfile.filename%>"

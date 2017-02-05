@@ -2,27 +2,18 @@ class FlashCardController < ApplicationController
   def index
     @user=@current_user
     userId=current_user.id
-
+    gon.cards="aaa"
     @userfiles=Userfile.find_by_sql(['select * from userfiles where user_id = :userid',{userid: userId}])
-        # p "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+@userfiles.to_s+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-  end
-  def findCards
     fileName = params[:filename]
-    # p "@@@@@@@@@@fileName@@"+ fileName +"@@@@@@@@@@@@@@"
-    userId=current_user.id
-
-    id=Userfile.find_by_sql(['select id from userfiles where user_id=:userid and filename=:filename',{userid: userId,filename: fileName}])
-    @cards=Word.find_by_sql(['select English,Japanese from words where fileid=:id',{id: id}])
-    
-    # p @cards.to_a
-    #
-    @cards.each do |result|
-      p result.English
-      p result.Japanese
+    p "ここから"
+    p fileName
+    if !fileName.present?
+      p "null                        null"
+      fileName=@userfiles[0].filename
     end
-
-    # p fileName
-    # p current_user.id
-    # p "aaaaaaaaaausrIdaa"+id.to_s+"aaaaaaaaaaaaaaa"
+    id=Userfile.find_by_sql(['select id from userfiles where user_id=:userid and filename=:filename',{userid: userId,filename: fileName}])
+    gon.cards=Word.find_by_sql(['select English,Japanese from words where fileid=:id',{id: id}])
+    p gon.cards
+    @aaa=gon.cards[0].Japanese
   end
 end
