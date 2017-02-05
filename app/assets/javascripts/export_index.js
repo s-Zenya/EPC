@@ -5,12 +5,12 @@ function createJson() { //exportフォームでJsonファイルを作成
 
     for (i = 0; i < english_words.length && i < japanese_words.length; i++) {
         data[i] = {
-            "e_word": "",
-            "j_word": ""
+            "English": "",
+            "Japanese": ""
         }
 
-        data[i].e_word = english_words[i];
-        data[i].j_word = japanese_words[i];
+        data[i].English = english_words[i];
+        data[i].Japanese = japanese_words[i];
     }
 
     data = JSON.stringify(data); //objectを文字列に変換する関数
