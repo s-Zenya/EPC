@@ -1,5 +1,6 @@
+var w_data=gon.cards
 function createCard(data) { //データを受け取りカードを生成
-  console.dir(gon.cards);
+  console.dir(w_data);
     $(".page-content").empty();
     for (var i in data) {
         $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
@@ -14,8 +15,8 @@ function createCard(data) { //データを受け取りカードを生成
 
 function findCards(filename){
   // var file=this.id;
-  console.log(filename);
-  $.ajax({
+  var xhr;
+  xhr=$.ajax({
     url: 'flash_card',
     type: 'POST',
     dataType: 'text',
@@ -23,32 +24,19 @@ function findCards(filename){
     data: {
       filename
     },
-  }).done(function(){
-    console.log("aaa");
-    createCard(gon.cards);
-  }).fail(function(){
-    console.log("bbb");
   });
+  return xhr.done(function(result) {
+      obj=JSON.parse(xhr.responseText)
+      w_data=obj.homearr
+      createCard(w_data);
+    }).fail(function(result) {
+      console.log( '通信失敗！');
+    });
+
+
   componentHandler.upgradeDom();
 }
 
-function createDbCard(){
-  $(".page-content").empty();
-  var data = gon.cards
-  console.log("1");
-  console.dir(gon.cards);
-  for (var i in data) {
-    console.log("a");
-      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
-          data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
-          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
-          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
-          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
-          );
-    }
-    console.log("2");
-    componentHandler.upgradeDom();
-}
 
 function importFileName(){
   for (var i in data) {
@@ -62,23 +50,22 @@ function loadSection(name) { //jsonファイルの名前を基にデータを作
   httpObj = new XMLHttpRequest();
     httpObj.open("get", name, true);
     httpObj.onload = function(){
-      file_data = gon.cards;
-      console.dir(file_data);
-      createCard(gon.cards);
+      file_data = w_data;
+      createCard(w_data);
     }
     httpObj.send(null);
 }
 
 function shuffleFileCards(){ //カードのシャッフル
-  var n = gon.cards.length, t, i;
-
+  var n = w_data.length, t, i;
+  console.dir(w_data);
   while (n) {
     i = Math.floor(Math.random() * n--);
-    t = gon.cards[n];
-    gon.cards[n] = gon.cards[i];
-    gon.cards[i] = t;
+    t = w_data[n];
+    w_data[n] = w_data[i];
+    w_data[i] = t;
   }
-  createCard(file_data);
+  createCard(w_data);
 }
 
 function chooseJson() {

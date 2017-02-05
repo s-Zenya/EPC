@@ -13,7 +13,6 @@
 </head>
 
 <body>
-<h1><%= @aaa %></h1>
   <!-- ヘッダー -->
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
@@ -47,8 +46,6 @@
       <%= userfile.filename %>
       </a>
       <% end %>
-      <a class="mdl-navigation__link" href="#" onClick="createCard();">hoge-</a>
-
       <% for userfile in @userfiles %>
       <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="<%=userfile.filename%>"
         <%= userfile.filename%></h1>
