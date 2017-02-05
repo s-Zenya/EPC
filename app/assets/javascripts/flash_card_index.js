@@ -1,15 +1,42 @@
+var w_data=gon.cards
 function createCard(data) { //データを受け取りカードを生成
+  console.dir(w_data);
     $(".page-content").empty();
     for (var i in data) {
         $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
-            data[i].e_word + "</p><p class='j_w'>" + data[i].j_word + "</p></div>"
-            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
-            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
-            + "<i id='" + data[i].e_word + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
+            data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
+            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
+            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
+            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
             );
       }
       componentHandler.upgradeDom();
 }
+
+function findCards(filename){
+  // var file=this.id;
+  var xhr;
+  xhr=$.ajax({
+    url: 'flash_card',
+    type: 'POST',
+    dataType: 'text',
+    async: true,
+    data: {
+      filename
+    },
+  });
+  return xhr.done(function(result) {
+      obj=JSON.parse(xhr.responseText)
+      w_data=obj.homearr
+      createCard(w_data);
+    }).fail(function(result) {
+      console.log( '通信失敗！');
+    });
+
+
+  componentHandler.upgradeDom();
+}
+
 
 function importFileName(){
   for (var i in data) {
@@ -18,26 +45,27 @@ function importFileName(){
     componentHandler.upgradeDom();
 }
 
+
 function loadSection(name) { //jsonファイルの名前を基にデータを作る
   httpObj = new XMLHttpRequest();
     httpObj.open("get", name, true);
     httpObj.onload = function(){
-      file_data = JSON.parse(this.responseText);
-      createCard(file_data);
+      file_data = w_data;
+      createCard(w_data);
     }
     httpObj.send(null);
 }
 
 function shuffleFileCards(){ //カードのシャッフル
-  var n = file_data.length, t, i;
-
+  var n = w_data.length, t, i;
+  console.dir(w_data);
   while (n) {
     i = Math.floor(Math.random() * n--);
-    t = file_data[n];
-    file_data[n] = file_data[i];
-    file_data[i] = t;
+    t = w_data[n];
+    w_data[n] = w_data[i];
+    w_data[i] = t;
   }
-  createCard(file_data);
+  createCard(w_data);
 }
 
 function chooseJson() {

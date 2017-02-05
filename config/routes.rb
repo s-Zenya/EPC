@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'export' => 'export#index'
   post 'export/create' => 'export#create'
   get 'sign_up' => 'users#new'
+  post 'flash_card' => 'flash_card#index'
 
   # ログイン処理
   namespace :user do
