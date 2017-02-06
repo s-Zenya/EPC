@@ -1,4 +1,4 @@
-var w_data=gon.cards
+var w_data=gon.cards;
 function createCard(data) { //データを受け取りカードを生成
   console.dir(w_data);
     $(".page-content").empty();
@@ -11,9 +11,11 @@ function createCard(data) { //データを受け取りカードを生成
             );
       }
       componentHandler.upgradeDom();
+
 }
 
 function findCards(filename){
+
   // var file=this.id;
   var xhr;
   xhr=$.ajax({
@@ -29,6 +31,7 @@ function findCards(filename){
       obj=JSON.parse(xhr.responseText)
       w_data=obj.homearr
       createCard(w_data);
+      dFocus();
     }).fail(function(result) {
       console.log( '通信失敗！');
     });

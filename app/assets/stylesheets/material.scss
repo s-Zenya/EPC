@@ -7193,8 +7193,8 @@ input.mdl-button[type="submit"] {
 .mdl-layout__drawer-button {
   display: block;
   position: absolute;
-  height: 48px;
-  width: 48px;
+  height: 30px;
+  width: 30px;
   border: 0;
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
@@ -7216,7 +7216,8 @@ input.mdl-button[type="submit"] {
     background-color: inherit; }
     @media screen and (max-width: 1024px) {
       .mdl-layout__header .mdl-layout__drawer-button {
-        margin: 4px; } }
+        margin: 4px;
+      padding-top: 12px;} }
   @media screen and (max-width: 1024px) {
     .mdl-layout__drawer-button {
       margin: 4px;
@@ -7295,7 +7296,7 @@ input.mdl-button[type="submit"] {
         min-height: 104px; } }
   @media screen and (max-width: 1024px) {
     .mdl-layout__header {
-      display: none; }
+       }
     .mdl-layout--fixed-header > .mdl-layout__header {
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -7352,7 +7353,7 @@ input.mdl-button[type="submit"] {
   @media screen and (max-width: 1024px) {
     .mdl-layout__header-row {
       height: 56px;
-      padding: 0 16px 0 72px; }
+      padding: 0 16px 0 40px; }
       .mdl-layout--no-drawer-button .mdl-layout__header-row {
         padding-left: 16px; } }
   .mdl-layout__header-row > * {
@@ -7382,8 +7383,9 @@ input.mdl-button[type="submit"] {
     padding: 0 24px; }
     @media screen and (max-width: 1024px) {
       .mdl-layout__header-row .mdl-navigation__link {
-        line-height: 56px;
-        padding: 0 16px; } }
+        line-height: 40px;
+        padding: 2px;
+        padding-top: 7px;} }
 
 .mdl-layout__obfuscator {
   background-color: transparent;

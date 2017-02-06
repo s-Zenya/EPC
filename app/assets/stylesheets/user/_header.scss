@@ -1,0 +1,117 @@
+.header_title{
+  margin-right: 10px;
+}
+.vocalization{
+  margin-right: 5px;
+}
+.vocalization_button{
+  width: 40px;
+  border-radius: 10px;
+  color: white;
+  background-color: #3f51b5;
+  margin-right: 10px;
+}
+
+.login_button{
+  width: 10px;
+  height: 30px;
+  position: absolute; right: 5px;
+}
+.current_user{
+  margin-left: 5px;
+  margin-right: 10px;
+  padding-top: 3px;
+}
+input.vocalization{
+  margin-right: 30px;
+}
+.import_button{
+  margin-right: 100px;
+}
+@media(max-width:1140px) {
+  input.vocalization{
+    width: 300px;
+    margin-right: 5px;
+
+  }
+  .import_button{
+    margin-right: 50px;
+  }
+  .login_button{
+    margin-left: 10px;
+  }
+  .vocalization_button{
+    margin-right: 10px;
+
+  }
+}
+.current_user{
+  margin-left: 5px;
+  position: absolute;right: 100px;
+
+
+}
+.import_button{
+  margin-right: 10px;
+}
+@media(max-width:800px) {
+  input.vocalization{
+    width: 140px;
+    margin-right: 15px;
+  }
+
+  .login_button{
+    padding:0;
+    font-size: 10px;
+  }
+  .import_button{
+    font-size: 3px;
+    padding: 0;
+    margin: 0;
+  }
+  .shufful_button{
+    padding: 0;
+    margin: 0;
+  }
+  .vocalization_button{
+    margin-right: 2px;
+  }
+  .current_user{
+    position: absolute; right: 65px;
+    padding-top: 4px;
+  }
+  .vocalization_button{
+    margin-right: 5px;
+  }
+}
+@media(max-width:500px) {
+  input.vocalization{
+    width: 70px;
+  }
+
+  .current_user{
+      display: none;
+  }
+  .import_button{
+    font-size: 3px;
+    padding: 0;
+    margin: 0;
+  }
+  .shufful_button{
+    padding: 0;
+    margin: 0;
+  }
+  .mdl-layout__drawer-button{
+    width: 30px;
+  }
+  .mdl-layout__header-row{
+    width: 30px;
+    padding: 0 0 0 50px;
+  }
+  .vocalization_button{
+    margin-right: 2px;
+  }
+  .login_button{
+    margin-left: 3px;
+  }
+}
