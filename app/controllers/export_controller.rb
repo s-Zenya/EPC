@@ -19,6 +19,7 @@ class ExportController < ApplicationController
         @words.fileid = @userfiles.id
         @words.English = english
         @words.Japanese = japanese_words[i]
+        @words.Weak = false
         @words.save
         i += 1
       end

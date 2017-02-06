@@ -1,17 +1,60 @@
 var w_data=gon.cards;
+
 function createCard(data) { //データを受け取りカードを生成
-  console.dir(w_data);
     $(".page-content").empty();
+    var check_box = ""
     for (var i in data) {
-        $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
-            data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
-            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect check_box_outline_blank'>check_box_outline_blank</i>"
-            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
-            + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
-            );
+      if(data[i].Weak == false){
+         check_box = " check_box_outline_blank'>check_box_outline_blank"
+      }else{
+        check_box = " check_box'>check_box"
+      }
+      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
+          data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
+          + "<i id='check_" + data[i].id + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " + check_box + "</i> "
+          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
+          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
+          );
       }
       componentHandler.upgradeDom();
 
+}
+
+$(document).on('click','.check_box_outline_blank',function(){
+  $("#" + this.id).removeClass("check_box_outline_blank");
+  $("#" + this.id).html("check_box");
+  $("#" + this.id).addClass("check_box");
+  componentHandler.upgradeDom();
+  flip(this.id, 1);
+})
+
+$(document).on('click','.check_box',function(){
+  $("#" + this.id).removeClass("check_box");
+  $("#" + this.id).addClass("check_box_outline_blank");
+  $("#" + this.id).html("check_box_outline_blank");
+  componentHandler.upgradeDom();
+  flip(this.id, 0);
+})
+
+function flip(wordId, weak){
+  var xhr;
+  id = wordId.substring(6)
+  console.log(id)
+  xhr=$.ajax({
+    url: 'flash_card',
+    type: 'PATCH',
+    dataType: 'json',
+    async: true,
+    data: {
+      id: id,
+      weak: weak
+    },
+  });
+  return xhr.done(function(result) {
+      console.log( '通信いけたでおおおお！');
+    }).fail(function(result) {
+      console.log( '通信失敗！');
+    });
 }
 
 function findCards(filename){
@@ -35,9 +78,7 @@ function findCards(filename){
     }).fail(function(result) {
       console.log( '通信失敗！');
     });
-
-
-  componentHandler.upgradeDom();
+  // componentHandler.upgradeDom();
 }
 
 
