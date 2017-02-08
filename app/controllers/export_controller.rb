@@ -8,11 +8,12 @@ class ExportController < ApplicationController
     japanese_words = params[:japanese_words]
     title = params[:title]
     data = []
+    p title
+    p "うおああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
     if Userfile.find_by_sql(['select * from userfiles where filename = :title',{title: title}]) == []
       @userfiles = Userfile.new;
       @userfiles.user_id = session[:user_id]
       @userfiles.filename = title
-      @userfiles.save
       i = 0
       for english in english_words do
         @words = Word.new;
@@ -20,6 +21,7 @@ class ExportController < ApplicationController
         @words.English = english
         @words.Japanese = japanese_words[i]
         @words.Weak = false
+        @userfiles.save
         @words.save
         i += 1
       end
