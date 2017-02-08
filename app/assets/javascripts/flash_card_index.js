@@ -22,19 +22,19 @@ function createCard(data) { //データを受け取りカードを生成
             $(document.getElementById(data[i].English)).css('font-size', '300%');
             console.log("1");
           }else if(data[i].English.length>11 && data[i].English.length<=17){
-            $(document.getElementById(data[i].English)).css('font-size', '250%');
+            $(document.getElementById(data[i].English)).css('font-size', '200%');
             console.log("2");
           }else{
-            $(document.getElementById(data[i].English)).css('font-size', '200%');
+            $(document.getElementById(data[i].English)).css('font-size', '120%');
             console.log("3");
           }
           //Japanese
           if(data[i].Japanese.length>0 && data[i].Japanese.length<=15){
             $(document.getElementById(data[i].Japanese)).css('font-size', '200%');
           }else if(data[i].Japanese.length>10 && data[i].Japanese.length<=25){
-            $(document.getElementById(data[i].Japanese)).css('font-size', '170%');
+            $(document.getElementById(data[i].Japanese)).css('font-size', '140%');
           }else{
-            $(document.getElementById(data[i].Japanese)).css('font-size', '130%');
+            $(document.getElementById(data[i].Japanese)).css('font-size', '100%');
           }
       }
       componentHandler.upgradeDom();
