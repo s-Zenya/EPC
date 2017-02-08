@@ -1,6 +1,6 @@
 class ExportController < ApplicationController
   def index
-    
+
   end
 
   def create
@@ -14,6 +14,7 @@ class ExportController < ApplicationController
       @userfiles = Userfile.new;
       @userfiles.user_id = session[:user_id]
       @userfiles.filename = title
+      @userfiles.save
       i = 0
       for english in english_words do
         @words = Word.new;
@@ -21,7 +22,6 @@ class ExportController < ApplicationController
         @words.English = english
         @words.Japanese = japanese_words[i]
         @words.Weak = false
-        @userfiles.save
         @words.save
         i += 1
       end
