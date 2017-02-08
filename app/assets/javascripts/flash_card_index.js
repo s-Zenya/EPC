@@ -17,16 +17,12 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          console.log("length="+data[i].English.length);
           if(data[i].English.length>0 && data[i].English.length<=11){
             $(document.getElementById(data[i].English)).css('font-size', '300%');
-            console.log("1");
           }else if(data[i].English.length>11 && data[i].English.length<=17){
             $(document.getElementById(data[i].English)).css('font-size', '200%');
-            console.log("2");
           }else{
             $(document.getElementById(data[i].English)).css('font-size', '120%');
-            console.log("3");
           }
           //Japanese
           if(data[i].Japanese.length>0 && data[i].Japanese.length<=15){
