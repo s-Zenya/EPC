@@ -58,7 +58,6 @@ function flip(wordId, weak){
 }
 
 function findCards(filename){
-
   // var file=this.id;
   var xhr;
   xhr=$.ajax({
