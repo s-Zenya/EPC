@@ -11,9 +11,9 @@
   <% end %>
 
   <div class="actions">
-    User Name<%= f.text_field :Username,maxlength:'10' %><br>
-    Pass<%= f.text_field :Userpassword,maxlength:'15' %><br>
-    mail<%= f.text_field :Useraddress %><br>
-    <%= f.submit %>
+    User Name <%= f.text_field :Username,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form' %><br><br>
+    Pass　　　<%= f.text_field :Userpassword,maxlength:'15',placeholder:'15文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form' %><br><br>
+    mail　　　 <%= f.text_field :Useraddress,type:"email",class:'input_form' %><br><br>
+    <%= f.submit class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
   </div>
 <% end %>

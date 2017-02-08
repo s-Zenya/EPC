@@ -14,7 +14,7 @@ class UserfilesController < ApplicationController
 
   # GET /userfiles/new
   def new
-    @userfile = Userfile.new
+
   end
 
   # GET /userfiles/1/edit

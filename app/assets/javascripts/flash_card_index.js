@@ -11,9 +11,9 @@ function createCard(data) { //データを受け取りカードを生成
       }
       $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
           data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
-          + "<i id='check_" + data[i].id + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect " + check_box + "</i> "
-          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect play'>play_arrow</i>"
-          + "<i id='" + data[i].English + "' class='material-icons mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mic'>mic</i><div>"
+          +"<button  class='mdl-js-button  mdl-button--colored c_button'><i id='check_" + data[i].id + "' class='material-icons" + check_box + "</i></button>"
+          +"<button id='" + data[i].English + "' class='mic  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>mic</i></button>"
+          +"<button id='" + data[i].English + "' class='play  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>play_arrow</i></button></div>"
           );
       }
       componentHandler.upgradeDom();
