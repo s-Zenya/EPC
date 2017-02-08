@@ -69,7 +69,42 @@ function CardsToDb() { //exportフォームでDBにカードを保存
  		{selectedLine: 1}
  	);
  });
-  // }
+
+function importJson(){
+  file_data = ""; //グローバル変数
+  var inp_file = document.querySelector('#file').files[0]; //ファイルフォームのidをここに指定
+  var reader = new FileReader();
+  var english_words = [];
+  var japanese_words = [];
+  var title = inp_file.name
+  reader.addEventListener('load', function(e) {
+    file_data = reader.result;
+    file_data = JSON.parse(file_data);
+    console.dir(file_data)
+    for(i=0; i<file_data.length;i++){
+      english_words[i] = file_data[i]["e_word"]
+      japanese_words[i] = file_data[i]["j_word"]
+    }
+    $.ajax({
+      url: '/export/create',
+      type: 'POST',
+      dataType: 'json',
+      async: true,
+      data: {
+        title: title,
+        english_words: english_words,
+        japanese_words: japanese_words
+      },
+    }).done(function(data){
+      $('.form').append('<div>DB登録に成功しました<div>');
+    }).fail(function(data){
+      $('.form').append('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
+      console.dir(english_words)
+      console.dir(japanese_words)
+    });
+  }, true);
+  reader.readAsText(inp_file);
+}
 
   function splitByLine(text_name) { //exportフォームの入力値を改行で分ける
       var text = document.getElementById(text_name).value.replace(/\r\n|\r/g, "\n");

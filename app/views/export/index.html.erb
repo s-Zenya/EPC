@@ -26,6 +26,12 @@
     <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成>
   <% else %>
     <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=DBに保存 remote:true>
+
+    <label for="file" class="file">
+      <input type="file" name="file" value="" id="file">
+      <div class="mdl-button mdl-js-button mdl-button--accent">JSONをDBに保存</div>
+    </label>
+    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=importJson() value=決定>
   <% end %>
 </br></br></br>
 </div>

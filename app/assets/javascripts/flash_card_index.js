@@ -1,5 +1,5 @@
-var w_data=gon.cards;
-
+var w_data=gon.cards
+console.dir(w_data)
 function createCard(data) { //データを受け取りカードを生成
     $(".page-content").empty();
     var check_box = ""
@@ -17,7 +17,6 @@ function createCard(data) { //データを受け取りカードを生成
           );
       }
       componentHandler.upgradeDom();
-
 }
 
 $(document).on('click','.check_box_outline_blank',function(){
@@ -58,7 +57,6 @@ function flip(wordId, weak){
 }
 
 function findCards(filename){
-
   // var file=this.id;
   var xhr;
   xhr=$.ajax({
@@ -74,7 +72,6 @@ function findCards(filename){
       obj=JSON.parse(xhr.responseText)
       w_data=obj.homearr
       createCard(w_data);
-      dFocus();
     }).fail(function(result) {
       console.log( '通信失敗！');
     });
