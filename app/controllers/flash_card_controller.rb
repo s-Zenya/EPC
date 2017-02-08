@@ -30,7 +30,6 @@ class FlashCardController < ApplicationController
     word = Word.find_by_sql(['select * from words where id = :id',{id: id}])
     word[0].Weak = weak
     word[0].save
-
     render :json => data
   end
 end

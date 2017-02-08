@@ -3,13 +3,7 @@
 <head>
   <title>MyFlashCards</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
-   <!-- <script type="text/javascript" src=..//s/assignment.js"></script>
-   <script type="text/javascript" src=..//s/jquery-linedtextarea.js"></script> -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, max-layoutum-scale=1.0, minimum-scale=1.0">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-   <!-- <link rel="stylesheet" href=/css/assignment.css"> -->
-   <!-- <link rel="stylesheet" href="css/jquery-linedtextarea.css"> -->
+
 </head>
 
 <body>
@@ -20,19 +14,20 @@
         <span class="mdl-layout-title" id="big_title">
           <a href="/top" class="header_title">EPC</a>
         </span>
-        <div class="mdl-layout-spacer"></div>
-        <input id="vocalization" class="vocalization" type="text" size="30"></form>
-        <div class="vocalization_button mdl-button mdl-js-button mdl-button--raised">Play</div>
+        <input id="vocalization" class="vocalization" type="text"></form>
+        <button class="vocalization_button">
+          <i class="material-icons">play_arrow</i>
+        </button>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="#" onclick="shuffleFileCards();">
+          <a class="mdl-navigation__link shuffle_button" href="#" onclick="shuffleFileCards();">
             <i class="material-icons">shuffle</i>
           </a>
-          <a class="mdl-navigation__link" href="#" onclick="chooseJson();">Import</a>
+          <a class="mdl-navigation__link import_button" href="#" onclick="chooseJson();">Import</a>
         </nav>
         <% if current_user.blank? #userが存在するかの確認 %>
         <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
         <% else %>
-        <span><%= @user.Username %>さん</span>
+        <span class="current_user"><%= @user.Username %>さん</span>
         <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
         <% end %>
       </div>
