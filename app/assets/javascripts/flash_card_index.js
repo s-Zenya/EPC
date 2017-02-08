@@ -9,12 +9,33 @@ function createCard(data) { //データを受け取りカードを生成
       }else{
         check_box = " check_box'>check_box"
       }
-      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p class='e_w'>" +
-          data[i].English + "</p><p class='j_w'>" + data[i].Japanese + "</p></div>"
+      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p id='"+data[i].English+"' class='e_w'>" +
+          data[i].English + "</p><p id='"+data[i].Japanese+"' class='j_w'>" + data[i].Japanese + "</p></div>"
           +"<button  class='mdl-js-button  mdl-button--colored c_button'><i id='check_" + data[i].id + "' class='material-icons" + check_box + "</i></button>"
           +"<button id='" + data[i].English + "' class='mic  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>mic</i></button>"
           +"<button id='" + data[i].English + "' class='play  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>play_arrow</i></button></div>"
           );
+          //文字数ごとにフォントサイズ変更
+          //English
+          console.log("length="+data[i].English.length);
+          if(data[i].English.length>0 && data[i].English.length<=11){
+            $(document.getElementById(data[i].English)).css('font-size', '300%');
+            console.log("1");
+          }else if(data[i].English.length>11 && data[i].English.length<=17){
+            $(document.getElementById(data[i].English)).css('font-size', '250%');
+            console.log("2");
+          }else{
+            $(document.getElementById(data[i].English)).css('font-size', '200%');
+            console.log("3");
+          }
+          //Japanese
+          if(data[i].Japanese.length>0 && data[i].Japanese.length<=15){
+            $(document.getElementById(data[i].Japanese)).css('font-size', '200%');
+          }else if(data[i].Japanese.length>10 && data[i].Japanese.length<=25){
+            $(document.getElementById(data[i].Japanese)).css('font-size', '170%');
+          }else{
+            $(document.getElementById(data[i].Japanese)).css('font-size', '130%');
+          }
       }
       componentHandler.upgradeDom();
 }
