@@ -14,7 +14,10 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    @user=current_user
+    session.delete :user_id
     @user = User.new
+
     # @user = current_user
   end
 
