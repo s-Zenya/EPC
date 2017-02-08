@@ -36,22 +36,15 @@
       <span class="mdl-layout-title">ChooseCards</span>
       <nav class="mdl-navigation">
         <!-- ここでメニューにファイル名を追加 -->
-        <%if @userfiles.present?%>
-          <% for userfile in @userfiles %>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="<%=userfile.filename%>"
-            <%= userfile.filename%></h1>
-          </button>
-          <% end %>
-          <div id="import_file">
-          <!-- ここにulタグでインポートするファイル名を追加 -->
-          </div>
-        <%end%>
+          <!-- <div id="import_file">
+          ここにulタグでインポートするファイル名を追加
+          </div> -->
       <% if @userfiles.present? %>
-      <% for userfile in @userfiles %>
-      <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>')">
-      <%= userfile.filename %>
-      </a>
-      <% end %>
+        <% for userfile in @userfiles %>
+          <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>')">
+            <%= userfile.filename %>
+          </a>
+        <% end %>
       <% end %>
       <div id="import_file">
       </div>
