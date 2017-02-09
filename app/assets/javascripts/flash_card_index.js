@@ -91,7 +91,6 @@ function findCards(filename){
       obj=JSON.parse(xhr.responseText)
       w_data=obj.homearr
       createCard(w_data);
-      dFocus();
     }).fail(function(result) {
       console.log( '通信失敗！');
     });
