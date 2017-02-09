@@ -2,20 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .top_button{
-//   margin-left: 45%;
-//   margin-top: 30px;
-//   font-size: 50px;
-//   padding: 10px 30px 10px 30px;
-// }
+.FlashCard{
+  margin-top: 100px;
+}
+.top_button{
+  width: 30%;
+  margin-left: 30%;
+  margin-top: 30px;
+  font-size: 50px;
+  padding: 20px 30px 20px 30px;
+}
 @media(max-width:1140px) {
 
 }
 
 @media(max-width:800px) {
-
+  .FlashCard{
+    margin-top: 70px;
+  }
+  .top_button{
+    font-size: 35px;
+    padding: 10px 30px 10px 30px;
+  }
 }
 @media(max-width:500px) {
-
-
+  .FlashCard{
+    margin-top: 40px;
+  }
+  .top_button{
+    font-size: 25px;
+  }
 }
