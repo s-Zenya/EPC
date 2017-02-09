@@ -17,24 +17,24 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          if(data[i].English.length>0 && data[i].English.length<=11){
-            $(document.getElementById(data[i].English)).css('font-size', '300%');
-          }else if(data[i].English.length>11 && data[i].English.length<=17){
-            $(document.getElementById(data[i].English)).css('font-size', '200%');
-          }else{
-            $(document.getElementById(data[i].English)).css('font-size', '120%');
-          }
+          auto_font_size(document.getElementById(data[i].English),data[i].English,11,17,'300%','200%','120%');
           //Japanese
-          if(data[i].Japanese.length>0 && data[i].Japanese.length<=15){
-            $(document.getElementById('j_'+data[i].Japanese)).css('font-size', '200%');
-          }else if(data[i].Japanese.length>10 && data[i].Japanese.length<=25){
-            $(document.getElementById('j_'+data[i].Japanese)).css('font-size', '140%');
-          }else{
-            $(document.getElementById('j_'+data[i].Japanese)).css('font-size', '100%');
-          }
+          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','120%','100%');
       }
       componentHandler.upgradeDom();
 }
+
+//htmlのフォントサイズを変更
+function auto_font_size(id,data,first_data,second_data,expansion1,expansion2,expansion3){
+  if(data.length>0 && data.length<=first_data){ console.log(first_data,second_data,data.length);
+    $(id).css('font-size', expansion1);
+  }else if(data.length>first_data && data.length<=second_data){
+    $(id).css('font-size', expansion2);
+  }else{
+    $(id).css('font-size', expansion3);
+  }
+}
+
 
 $(document).on('click','.check_box_outline_blank',function(){
   $("#" + this.id).removeClass("check_box_outline_blank");
