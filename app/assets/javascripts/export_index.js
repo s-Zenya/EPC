@@ -77,6 +77,14 @@ function importJson(){
   var english_words = [];
   var japanese_words = [];
   var title = inp_file.name
+  // reader.onload = (function(){
+  //   var file = document.getElementById( 'file' );
+  //   var file_notification = document.getElementById("JsonToDb");
+  //   file.onchange = function(){
+  //   file_notification.innerHTML(title + "をDBに保存")
+  }
+
+  });
   reader.addEventListener('load', function(e) {
     file_data = reader.result;
     file_data = JSON.parse(file_data);
