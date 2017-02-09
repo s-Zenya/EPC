@@ -21,8 +21,6 @@ function createCard(data) { //データを受け取りカードを生成
           //Japanese
           auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','130%','110%');
       }
-      dFocus();
-
       componentHandler.upgradeDom();
 }
 
@@ -90,6 +88,7 @@ function findCards(filename){
   return xhr.done(function(result) {
       obj=JSON.parse(xhr.responseText)
       w_data=obj.homearr
+      dFocus();
       createCard(w_data);
     }).fail(function(result) {
       console.log( '通信失敗！');
