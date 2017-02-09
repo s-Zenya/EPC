@@ -21,6 +21,8 @@ function createCard(data) { //データを受け取りカードを生成
           //Japanese
           auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','120%','100%');
       }
+      dFocus();
+
       componentHandler.upgradeDom();
 }
 

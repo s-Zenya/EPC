@@ -70,6 +70,16 @@ function CardsToDb() { //exportフォームでDBにカードを保存
  	);
  });
 
+ window.onload = function(){
+  var file = document.getElementById('file');
+  var file_notification = document.getElementById("JsonToDb");
+  console.dir(file)
+  file.addEventListener("change", function(e) {
+    console.log("ugojdoas")
+    file_notification.textContent = e.target.files[0].name + "をDBに保存";
+  },false);
+  };
+
 function importJson(){
   file_data = ""; //グローバル変数
   var inp_file = document.querySelector('#file').files[0]; //ファイルフォームのidをここに指定
@@ -77,14 +87,6 @@ function importJson(){
   var english_words = [];
   var japanese_words = [];
   var title = inp_file.name
-  // reader.onload = (function(){
-  //   var file = document.getElementById( 'file' );
-  //   var file_notification = document.getElementById("JsonToDb");
-  //   file.onchange = function(){
-  //   file_notification.innerHTML(title + "をDBに保存")
-  }
-
-  });
   reader.addEventListener('load', function(e) {
     file_data = reader.result;
     file_data = JSON.parse(file_data);
