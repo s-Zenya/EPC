@@ -17,9 +17,9 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          auto_font_size(document.getElementById(data[i].English),data[i].English,11,17,'300%','200%','120%');
+          auto_font_size(document.getElementById(data[i].English),data[i].English,11,17,'300%','200%','170%');
           //Japanese
-          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','120%','100%');
+          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','130%','110%');
       }
       componentHandler.upgradeDom();
 }
@@ -34,7 +34,6 @@ function auto_font_size(id,data,first_data,second_data,expansion1,expansion2,exp
     $(id).css('font-size', expansion3);
   }
 }
-
 
 $(document).on('click','.check_box_outline_blank',function(){
   $("#" + this.id).removeClass("check_box_outline_blank");
@@ -73,6 +72,7 @@ function flip(wordId, weak){
     });
 }
 
+// メニュー内のfilenameを選択した時の処理
 function findCards(filename){
   // var file=this.id;
   var xhr;
@@ -89,12 +89,12 @@ function findCards(filename){
       obj=JSON.parse(xhr.responseText)
       w_data=obj.homearr
       createCard(w_data);
+      dFocus();
     }).fail(function(result) {
       console.log( '通信失敗！');
     });
   // componentHandler.upgradeDom();
 }
-
 
 function importFileName(){
   for (var i in data) {
@@ -137,6 +137,7 @@ function chooseJson() {
                                       </div>');
     componentHandler.upgradeDom();
 }
+
 file_data = ""; //グローバル変数
 function loadJson() {
     var inp_file = document.querySelector('#file').files[0]; //ファイルフォームのidをここに指定
@@ -170,8 +171,6 @@ $(document).on('click','.e_card', function() {
     }
 });
 
-
-
 // メニューの発音チェック
 $(document).on('click','.vocalization_button',function(){
   console.log(document.getElementById('vocalization').value);
@@ -187,6 +186,7 @@ $(document).on('click','.vocalization_button',function(){
   };
   speechSynthesis.speak(synthes);
 })
+
 //カードの音声を再生
 $(document).on('click','.play',function(){
   console.log("aaaaa");
@@ -239,7 +239,6 @@ $(document).on('click','.mic',function(){
       }
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }, false);
-
   // 録音開始
   recognition.start();
 })
