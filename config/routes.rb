@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new'
   post 'flash_card' => 'flash_card#index'
   patch 'flash_card' => 'flash_card#flip'
+  get 'editing' => 'editing#index'
+  post 'editing_delete' => 'editing#delete'
 
   # ログイン処理
   namespace :user do

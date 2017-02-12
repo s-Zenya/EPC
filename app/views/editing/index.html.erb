@@ -1,0 +1,28 @@
+<%= render :partial => "/partial/head" %>
+<h1>editing!</h1>
+<div>
+  <div class="">
+    <% if @userfiles.present? %>
+    <ul class="file_list demo-list-item mdl-list">
+      <% i=1 %>
+      <% for userfile in @userfiles %>
+
+
+          <% if i%2==1 then %>
+            <li class="list_color">
+          <% else %>
+            <li class="">
+          <% end %>
+              <span class="mdl-list__item-primary-content">
+                  <%= userfile.filename %>
+                  <button class='editing_button mdl-js-button  mdl-button--colored' onclick="deleteCards('<%=userfile.filename%>')">delete</button>
+                  <button class='editing_button mdl-js-button  mdl-button--colored'>edit</button>
+              </span>
+            </li>
+
+          <% i+=1 %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
