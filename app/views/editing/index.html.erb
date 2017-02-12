@@ -1,7 +1,7 @@
 <%= render :partial => "/partial/head" %>
-<h1>editing!</h1>
+<h3>editing!</h3>
 <div>
-  <div class="">
+  <div class="editing_field">
     <% if @userfiles.present? %>
     <ul class="file_list demo-list-item mdl-list">
       <% i=1 %>
@@ -11,7 +11,7 @@
           <% if i%2==1 then %>
             <li class="list_color">
           <% else %>
-            <li class="">
+            <li class="list_non_color">
           <% end %>
               <span class="mdl-list__item-primary-content">
                   <%= userfile.filename %>
@@ -26,3 +26,4 @@
     </ul>
   </div>
 </div>
+<%= link_to 'Back', root_path,class:'mdl-button mdl-js-button mdl-button--primary' %>

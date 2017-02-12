@@ -1,18 +1,31 @@
 .editing_button{
   width: 60px;
-  border-radius: 8px;
+  height: 25px;
+  border-radius: 6px;
   color: white;
   background-color: #3f51b5;
+  margin-top: 0;
   margin-right: 10px;
   float: right;
+  position: relative; bottom:4px;
 }
 .file_list{
   width: 60%;
 
 }
 .list_color{
-  background-color: #CCC;
+  background-color: #f3f3f3;
+}
+.list_non_color{
+  background-color: white;
 }
 .file_list li{
-  height: 30px;
+  height: 25px;
+  padding-left: 10px;
+  padding-top: 1%;
+}
+.editing_field ul{
+  width: 80%;
+  background-color: lightgreen;
+  padding: 20px 5% 20px 5%;
 }
