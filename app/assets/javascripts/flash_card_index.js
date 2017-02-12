@@ -103,7 +103,6 @@ function importFileName(){
     componentHandler.upgradeDom();
 }
 
-
 function loadSection(name) { //jsonファイルの名前を基にデータを作る
   httpObj = new XMLHttpRequest();
     httpObj.open("get", name, true);
