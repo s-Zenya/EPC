@@ -1,4 +1,4 @@
-fnction deleteCards(filename){
+function deleteCards(filename){
   var xhr;
   xhr=$.ajax({
     url: 'editing_delete',
@@ -9,10 +9,10 @@ fnction deleteCards(filename){
       filename
     },
   });
-  return xhr.done(function(result) {
-      // obj=JSON.parse(xhr.responseText)
-      // w_data=obj.homearr
-    }).fail(function(result) {
-      console.log( '通信失敗！');
-    });
+    return xhr.done(function(result) {
+        console.log( '通信いけたでおおおお！');
+        window.location.reload();
+      }).fail(function(result) {
+        console.log( '通信失敗！');
+      });
 }
