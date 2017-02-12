@@ -10,17 +10,11 @@ class EditingController < ApplicationController
     data = []
     userId=current_user.id
     fileName = params[:filename]
-    if fileName.present?
-      id=Userfile.find_by_sql(['select id from userfiles where user_id=:userid and filename=:filename',{userid: userId,filename: fileName}])
-      Userfile.destroy_all(['user_id = :userid and filename = :filename',{userid: userId,filename: fileName}])
-      Word.destroy_all(['fileid = :id',{id: id}])
-      render :json => data
-    else
-      p "失敗"
-    end
+    id=Userfile.find_by_sql(['select id from userfiles where user_id=:userid and filename=:filename',{userid: userId,filename: fileName}])
+    Userfile.destroy_all(['user_id = :userid and filename = :filename',{userid: userId,filename: fileName}])
+    Word.destroy_all(['fileid = :id',{id: id}])
+    render :json => data
   end
-
-
   def edit
   end
 end
