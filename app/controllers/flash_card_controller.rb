@@ -5,8 +5,6 @@ class FlashCardController < ApplicationController
       @userfiles=Userfile.find_by_sql(['select * from userfiles where user_id = :userid',{userid: userId}])
       if @userfiles.present?
         fileName = params[:filename]
-        p "----------------------------------------------------------"
-        p fileName
           if !fileName.present?
             fileName=@userfiles[0].filename
           end
