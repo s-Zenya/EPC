@@ -197,6 +197,7 @@ $(document).on('click','.play',function(){
   synthes.pitch = 1;
   synthes.text = e_text;
   synthes.lang = 'en';
+
   synthes.onend = function(e) {
   };
   speechSynthesis.speak(synthes);
@@ -208,34 +209,45 @@ $(document).on('click','.mic',function(){
   var recognition = new webkitSpeechRecognition();
   recognition.lang = 'en';
   var correct_word = this.id;
+  recognition.maxAlternatives = 10;
   // 録音終了時トリガー
   recognition.addEventListener('result', function(event){
-    var reserved_word = event.results.item(0).item(0)
+    var reserved_word = event.results
     // //スナックバー表示
     'use strict';
     var snackbarContainer = document.querySelector('#demo-toast-example');
     var showToastButton = document.querySelector('#demo-show-toast');
-    var data = {
-      message: reserved_word.transcript + '(' + Math.round(reserved_word.confidence * 10000) / 100 + 'Pt' + ')',
-      timeout: 3000
-    };
     //点数によって背景の色変える処理
     //現状カードの色とか変えるの結構大変なんで保留(録音と再生機能カード内部に入れ込めたら楽かも)
-    if(reserved_word.transcript == correct_word){
-      if(reserved_word.confidence > 0.85){
-        data.message += "  Perfect!!"
-        console.log("い")
-      }else if(reserved_word.confidence > 0.65){
-        data.message += "  Good"
-        console.log("ろ")
-      }else if(reserved_word.confidence > 0.45){
-        data.message += "  Nice"
-        console.log("は")
+    var i;
+    var judge;
+    console.dir(reserved_word.item(0));
+    for(i = 0;i < reserved_word.item(0).length; i++){
+      if(reserved_word.item(0).item(i).transcript.toUpperCase() == correct_word.toUpperCase()){
+        if(reserved_word.item(0).item(i).confidence > 0.85){
+          judge = "Perfect!!"
+          console.log("い")
+        }else if(reserved_word.item(0).item(i).confidence > 0.65){
+          judge = "Good"
+          console.log("ろ")
+        }else if(reserved_word.item(0).item(i).confidence > 0.45){
+          judge = "Nice"
+          console.log("は")
+        }else{
+          judge = "Bad…"
         }
-        else{
-          data.message += "  Bad…"
-        }
+        break;
       }
+    }
+    if(i == reserved_word.item(0).length){
+      judge = "あたしはこう聞こえたわよ♡"
+      i = 0;
+    }
+    console.log(i);
+    var data = {
+      message: reserved_word.item(0).item(i).transcript + '(' + Math.round(reserved_word.item(0).item(i).confidence * 10000) / 100 + 'Pt' + ')     ' + judge,
+      timeout: 3000
+    };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }, false);
   // 録音開始
