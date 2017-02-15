@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170201063136) do
     t.string   "Username"
     t.string   "Userpassword"
     t.string   "Useraddress"
+    t.index ["Username"], name: "index_users_on_Username", unique: true
   end
 
   create_table "words", force: :cascade do |t|
