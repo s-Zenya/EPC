@@ -157,9 +157,9 @@ function dFocus() {
     $('.mdl-layout__obfuscator').trigger("click");
 };
 
-// $(document).ready(function() {
-//     loadSection('./json/practice_1.json');
-// });
+$(document).ready(function() {
+    createCard(w_data);
+});
 
 $(document).on('click','.e_card', function() {
 

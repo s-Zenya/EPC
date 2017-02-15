@@ -1,5 +1,5 @@
 <%= render :partial => "/partial/head" %>
-<h3>editing!</h3>
+<h3 class="edit_title">Edit</h3>
 <div>
   <div class="editing_field">
     <% if @userfiles.present? %>
@@ -14,7 +14,7 @@
               <span class="mdl-list__item-primary-content">
                   <%= userfile.filename %>
                   <button class='editing_button mdl-js-button  mdl-button--colored' onclick="deleteCards('<%=userfile.id%>')">delete</button>
-                  <%= link_to "edit", editing_edit_url(:fileId => userfile.id), class: 'editing_button mdl-js-button  mdl-button--colored', method: :get %>
+                  <%= link_to "edit", editing_edit_url(:fileId => userfile.id), class: 'editing_button_edit editing_button mdl-js-button  mdl-button--colored', method: :get %>
               </span>
             </li>
           <% i+=1 %>
@@ -23,4 +23,4 @@
     </ul>
   </div>
 </div>
-<%= link_to 'Back', root_path,class:'mdl-button mdl-js-button mdl-button--primary' %>
+<%= link_to 'Back', root_path,class:'back_button mdl-button mdl-js-button mdl-button--primary' %>
