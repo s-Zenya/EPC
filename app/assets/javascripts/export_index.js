@@ -36,7 +36,7 @@ function createJson() { //exportフォームでJsonファイルを作成
         temp.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent");
         temp.setAttribute("download", file_title);
         links.removeChild(links.lastElementChild);
-        links.appendChild(temp);
+        links.prependChild(temp);
     }
     // componentHandler.upgradeDom();
 }
@@ -58,9 +58,11 @@ function CardsToDb() { //exportフォームでDBにカードを保存
       japanese_words: japanese_words
     },
   }).done(function(data){
-    $('.form').append('<div>DB登録に成功しました<div>');
+    $(".error_msg").empty();
+    $('.error_msg').prepend('<div>DB登録に成功しました<div>');
   }).fail(function(data){
-    $('.form').append('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
+    $(".error_msg").empty();
+    $('.error_msg').prepend('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
   });
 }
 
@@ -106,9 +108,11 @@ function importJson(){
         japanese_words: japanese_words
       },
     }).done(function(data){
-      $('.form').append('<div>DB登録に成功しました<div>');
+      $(".error_msg").empty();
+      $('.error_msg').prepend('<div>DB登録に成功しました<div>');
     }).fail(function(data){
-      $('.form').append('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
+      $(".error_msg").empty();
+      $('.error_msg').prepend('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
       console.dir(english_words)
       console.dir(japanese_words)
     });

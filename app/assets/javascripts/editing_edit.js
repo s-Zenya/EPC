@@ -15,9 +15,11 @@ function CardsToDb() { //exportフォームでDBにカードを保存
       japanese_words: japanese_words
     },
   }).done(function(data){
-    $('.form').append('<div>DB登録に成功しました<div>');
+    $(".error_msg").empty();
+    $('.form').prepend('<div>DB登録に成功しました<div>');
   }).fail(function(data){
-    $('.form').append('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
+    $(".error_msg").empty();
+    $('.form').prepend('<div>DB登録に失敗しました<br>ファイル名が重複している可能性があります<div>');
   });
 }
 
