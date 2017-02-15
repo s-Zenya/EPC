@@ -1,13 +1,20 @@
 .editing_button{
-  width: 60px;
+  width: 50px;
   height: 25px;
-  border-radius: 6px;
-  color: white;
-  background-color: #3f51b5;
-  margin-top: 0;
-  margin-right: 10px;
+  padding-top: 2px;
+  text-align: center;
+  position:relative; bottom: 4px;
   float: right;
-  position: relative; bottom:4px;
+  margin-right: 5px;
+  border: solid 1px #7b68ee;
+  border-radius: 5px;
+  background-color: #3f51b5;
+  color: #fff;
+  text-decoration: none;
+}
+.editing_button_edit{
+  height: 20px;
+  padding-top: 4px;
 }
 .edit_title{
   text-align: center;
