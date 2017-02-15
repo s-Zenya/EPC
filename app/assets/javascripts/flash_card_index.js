@@ -246,7 +246,7 @@ $(document).on('click','.mic',function(){
     console.log(i);
     var data = {
       message: reserved_word.item(0).item(i).transcript + '(' + Math.round(reserved_word.item(0).item(i).confidence * 10000) / 100 + 'Pt' + ')     ' + judge,
-      timeout: 3000000
+      timeout: 3000
     };
     snackbarContainer.MaterialSnackbar.showSnackbar(data);
   }, false);
