@@ -29,9 +29,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    if @user.save
-      redirect_to '/user/sign_in'
-    else
+    name = user_params[:Username]
+    respond_to do |format|
+      if User.find_by_sql(['select * from users where Username = :name',{name: name}]) == []
+        if @user.save
+          format.html { redirect_to '/user/sign_in', notice: 'User was successfully created.' }
+          format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
+        end
+      end
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
     end

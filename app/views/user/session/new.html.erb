@@ -1,5 +1,6 @@
 <%= render :partial => "/partial/head" %>
 <h1>Please sign in</h1>
+<p id="notice"><%= notice %></p>
 <%= form_tag user_sign_in_path do %>
 <div class="actions">
   Username<%= text_field_tag :username %><br><br>
