@@ -1,6 +1,5 @@
 class ExportController < ApplicationController
   def index
-
   end
 
   def create
@@ -8,7 +7,6 @@ class ExportController < ApplicationController
     japanese_words = params[:japanese_words]
     title = params[:title]
     data = []
-    p title
     p "うおああああああああああああああああああああああああああああああああああああああああああああああああああああああ"
     if Userfile.find_by_sql(['select * from userfiles where filename = :title',{title: title}]) == []
       @userfiles = Userfile.new;
