@@ -13,13 +13,17 @@
 }
 
 .login_button{
-  width: 10px;
+  width: auto;
   height: 30px;
   position: absolute; right: 5px;
+  border: solid 1px #7b68ee;
+  border-radius: 5px;
+  background-color: #3f51b5;
+  color: #fff;
+  text-decoration: none;
 }
 .current_user{
   margin-left: 5px;
-  margin-right: 10px;
   padding-top: 3px;
 }
 input.vocalization{
@@ -60,8 +64,7 @@ input.vocalization{
   }
 
   .login_button{
-    padding:0;
-    font-size: 10px;
+    font-size: 13px;
   }
   .import_button{
     font-size: 3px;
@@ -78,16 +81,22 @@ input.vocalization{
   .current_user{
     position: absolute; right: 65px;
     padding-top: 4px;
+    margin-right: 10px;
   }
   .vocalization_button{
     margin-right: 5px;
   }
 }
-@media(max-width:500px) {
+@media(max-width:520px) {
   input.vocalization{
-    width: 70px;
+    width: 125px;
   }
-
+  .mdl-button{
+    padding: 0 2px 0 2px;
+  }
+.header_title{
+  margin-right: 3px;
+}
   .current_user{
       display: none;
   }
@@ -101,16 +110,19 @@ input.vocalization{
     margin: 0;
   }
   .mdl-layout__drawer-button{
-    width: 30px;
+    width: 23px;
   }
   .mdl-layout__header-row{
     width: 30px;
-    padding: 0 0 0 50px;
+    padding: 0 0 0 30px;
   }
   .vocalization_button{
     margin-right: 2px;
   }
   .login_button{
     margin-left: 3px;
+    font-size: 10px;
   }
+}
+@media(max-width:520px) {
 }
