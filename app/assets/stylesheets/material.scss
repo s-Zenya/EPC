@@ -8493,10 +8493,10 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-snackbar {
       width: 100%;
       left: 0;
-      line-height: 10px;
-      font-size: 10px;
+      line-height: 30px;
+      font-size: 20px;
       min-height: 48px;
-      max-height: 80px; } }
+      max-height: 500px; } }
   @media (min-width: 480px) {
     .mdl-snackbar {
       min-width: 288px;
