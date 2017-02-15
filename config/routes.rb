@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   patch 'flash_card' => 'flash_card#flip'
   get 'editing' => 'editing#index'
   post 'editing_delete' => 'editing#delete'
+  get 'editing_edit' => 'editing#edit'
 
   # ログイン処理
   namespace :user do

@@ -8,13 +8,21 @@ class EditingController < ApplicationController
 
   def delete
     data = []
-    userId=current_user.id
-    fileName = params[:filename]
-    id=Userfile.find_by_sql(['select id from userfiles where user_id=:userid and filename=:filename',{userid: userId,filename: fileName}])
-    Userfile.destroy_all(['user_id = :userid and filename = :filename',{userid: userId,filename: fileName}])
-    Word.destroy_all(['fileid = :id',{id: id}])
+    fileId = params[:fileId]
+    Userfile.destroy_all(['id = :id',{id: fileId}])
+    Word.destroy_all(['fileid = :id',{id: fileId}])
     render :json => data
   end
+
   def edit
+    fileId = params[:fileId]
+    p fileId
+    @userfile = Userfile.find_by_sql(['select * from userfiles where id = :id',{id: fileId}])
+    p @userfile[0].filename
+    @words = Word.find_by_sql(['select * from words where fileId = :fileId',{fileId: fileId}])
+  end
+
+  def update
+
   end
 end

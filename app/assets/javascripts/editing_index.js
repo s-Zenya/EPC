@@ -1,4 +1,4 @@
-function deleteCards(filename){
+function deleteCards(fileId){
   var xhr;
   xhr=$.ajax({
     url: 'editing_delete',
@@ -6,7 +6,7 @@ function deleteCards(filename){
     dataType: 'text',
     async: true,
     data: {
-      filename
+      fileId
     },
   });
     return xhr.done(function(result) {
