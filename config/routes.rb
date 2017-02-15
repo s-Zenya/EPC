@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'editing' => 'editing#index'
   post 'editing_delete' => 'editing#delete'
   get 'editing_edit' => 'editing#edit'
+  post '/edit/update' => 'editing#update'
 
   # ログイン処理
   namespace :user do

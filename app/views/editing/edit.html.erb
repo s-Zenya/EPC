@@ -6,21 +6,15 @@
     <label class="mdl-textfield__label" for="title">変更後のタイトル名</label>
   </div></br>
   <div class="mdl-textfield mdl-js-textfield">
-    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english">
-      <% for word in @words do %>
-<%= word.English %>
-      <% end %>
-    </textarea>
+    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english"><% for word in @words do %>
+<%=word.English%><% end %></textarea>
     <label class="mdl-textfield__label" for="english">　　　　please write English here...</label>
   </div>
   <div class="mdl-textfield mdl-js-textfield">
-    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese">
-      <% for word in @words do %>
-<%= word.Japanese %>
-      <% end %>
-    </textarea>
+    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese"><% for word in @words do %>
+<%= word.Japanese %><% end %></textarea>
     <label class="mdl-textfield__label" for="japanese">　　　　please write Japanese here...</label>
   </div></br>
-  <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=DBに変更を保存 remote:true>
+  <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=EditDb('<%=@userfile[0].id%>') value=DBに変更を保存 remote:true>
 </br></br></br>
 </div>
