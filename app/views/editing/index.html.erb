@@ -1,5 +1,5 @@
 <%= render :partial => "/partial/head" %>
-<h3>editing!</h3>
+<h3 class="edit_title">Edit</h3>
 <div>
   <div class="editing_field">
     <% if @userfiles.present? %>
@@ -23,4 +23,4 @@
     </ul>
   </div>
 </div>
-<%= link_to 'Back', root_path,class:'mdl-button mdl-js-button mdl-button--primary' %>
+<%= link_to 'Back', root_path,class:'back_button mdl-button mdl-js-button mdl-button--primary' %>

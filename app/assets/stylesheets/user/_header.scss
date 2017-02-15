@@ -28,9 +28,14 @@
 }
 input.vocalization{
   margin-right: 1px;
+  width: 350px;
 }
 .import_button{
   margin-right: 100px;
+}
+.back_button{
+  width: 100%;
+  text-align: center;
 }
 @media(max-width:1140px) {
   input.vocalization{

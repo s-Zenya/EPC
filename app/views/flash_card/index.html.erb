@@ -1,62 +1,52 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <title>MyFlashCards</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-</head>
-
-<body>
-  <!-- ヘッダー -->
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-        <span class="mdl-layout-title" id="big_title">
-          <a href="/top" class="header_title">EPC</a>
-        </span>
-        <input id="vocalization" class="vocalization" type="text" placeholder="入力した単語を再生"></form>
-        <button class="vocalization_button">
-          <i class="material-icons">play_arrow</i>
-        </button>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link shuffle_button" href="#" onclick="shuffleFileCards();">
-            <i class="material-icons">shuffle</i>
-          </a>
-          <a class="mdl-navigation__link import_button" href="#" onclick="chooseJson();">Import</a>
-        </nav>
-        <% if current_user.blank? #userが存在するかの確認 %>
-        <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
-        <% else %>
-        <span class="current_user"><%= @current_user.Username %>さん</span>
-        <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
-        <% end %>
-      </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">ChooseCards</span>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title" id="big_title">
+        <a href="/top" class="header_title">EPC</a>
+      </span>
+      <input id="vocalization" class="vocalization" type="text" placeholder="入力した単語を再生"></form>
+      <button class="vocalization_button">
+        <i class="material-icons">play_arrow</i>
+      </button>
       <nav class="mdl-navigation">
-        <!-- ここでメニューにファイル名を追加 -->
-          <!-- <div id="import_file">
-          ここにulタグでインポートするファイル名を追加
-          </div> -->
-      <% if @userfiles.present? %>
-        <% for userfile in @userfiles %>
-          <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>')">
-            <%= userfile.filename %>
-          </a>
-        <% end %>
-      <% end %>
-      <div id="import_file">
-      </div>
+        <a class="mdl-navigation__link shuffle_button" href="#" onclick="shuffleFileCards();">
+          <i class="material-icons">shuffle</i>
+        </a>
+        <a class="mdl-navigation__link import_button" href="#" onclick="chooseJson();">Import</a>
       </nav>
+      <% if current_user.blank? #userが存在するかの確認 %>
+      <%= link_to 'Login','user/sign_in',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+      <% else %>
+      <span class="current_user"><%= @current_user.Username %>さん</span>
+      <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"login_button mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+      <% end %>
     </div>
-    <main class="mdl-layout__content">
-      <div class="page-content"></div>
-      <!-- スナックバー用コンテナ-->
-      <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
-      </div>
-    </main>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">ChooseCards</span>
+    <nav class="mdl-navigation">
+      <!-- ここでメニューにファイル名を追加 -->
+        <!-- <div id="import_file">
+        ここにulタグでインポートするファイル名を追加
+        </div> -->
+    <% if @userfiles.present? %>
+      <% for userfile in @userfiles %>
+        <a class="mdl-navigation__link" href="#" onClick="findCards('<%= userfile.filename %>')">
+          <%= userfile.filename %>
+        </a>
+      <% end %>
+    <% end %>
+    <div id="import_file">
+    </div>
+    </nav>
   </div>
-</body>
+  <main class="mdl-layout__content">
+    <div class="page-content"></div>
+    <!-- スナックバー用コンテナ-->
+    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+  </main>
+  <%= link_to 'Back', root_path,class:'back_button mdl-button mdl-js-button mdl-button--primary' %>
+</div>
