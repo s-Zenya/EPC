@@ -30,7 +30,7 @@ function auto_font_size(id,data,first_data,second_data,expansion1,expansion2,exp
     $(id).css('font-size', expansion1);
   }else if(data.length>first_data && data.length<=second_data){
     $(id).css('font-size', expansion2);
-  }else{
+  }else if(data.length>second_data){
     $(id).css('font-size', expansion3);
   }
 }
