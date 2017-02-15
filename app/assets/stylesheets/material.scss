@@ -8465,11 +8465,12 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 /* Dialog */
 .mdl-snackbar {
   position: fixed;
-  font-size: 40px;
-  width: 80%;
+  font-size: 25px;
+  width: 90%;
   bottom: 0;
   left: 50%;
   cursor: default;
+  line-height: 40px;
   background-color: #323232;
   z-index: 3;
   display: block;
@@ -8492,6 +8493,8 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-snackbar {
       width: 100%;
       left: 0;
+      line-height: 10px;
+      font-size: 10px;
       min-height: 48px;
       max-height: 80px; } }
   @media (min-width: 480px) {
