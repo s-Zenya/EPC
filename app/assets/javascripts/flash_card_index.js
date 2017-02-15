@@ -17,9 +17,9 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          auto_font_size(document.getElementById(data[i].English),data[i].English,11,17,'300%','200%','170%');
+          auto_font_size(document.getElementById(data[i].English),data[i].English,11,23,'300%','200%','170%');
           //Japanese
-          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,20,'180%','130%','110%');
+          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,26,'180%','130%','110%');
       }
       componentHandler.upgradeDom();
 }
