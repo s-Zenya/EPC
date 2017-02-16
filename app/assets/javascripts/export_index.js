@@ -94,8 +94,8 @@ function importJson(){
     file_data = JSON.parse(file_data);
     console.dir(file_data)
     for(i=0; i<file_data.length;i++){
-      english_words[i] = file_data[i]["e_word"]
-      japanese_words[i] = file_data[i]["j_word"]
+      english_words[i] = file_data[i]["English"]
+      japanese_words[i] = file_data[i]["Japanese"]
     }
     $.ajax({
       url: '/export/create',
