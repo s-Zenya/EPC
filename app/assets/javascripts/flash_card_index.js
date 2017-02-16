@@ -17,7 +17,6 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          console.log(data[i].English.length);
           auto_font_size('.e_'+i,data[i].English,11,23,'300%','200%','170%');
           //Japanese
           auto_font_size('.j_'+i,data[i].Japanese,14,26,'180%','130%','110%')
@@ -27,15 +26,11 @@ function createCard(data) { //データを受け取りカードを生成
 
 //htmlのフォントサイズを変更
 function auto_font_size(id,data,first_data,second_data,expansion1,expansion2,expansion3){
-  if(data.length>0 && data.length<=first_data){ console.log(first_data,second_data,data.length);
-    $(id).css('font-size', expansion1);
-    console.log('a');
+  if(data.length>0 && data.length<=first_data){
   }else if(data.length>first_data && data.length<=second_data){
-    $(id).css('font-size', expansion2);
-    console.log('b');
+    $(id).css('font-size', expansion2);;
   }else if(data.length>second_data){
     $(id).css('font-size', expansion3);
-    console.log('c');
   }
 }
 
