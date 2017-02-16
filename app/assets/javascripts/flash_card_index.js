@@ -4,16 +4,21 @@ function createCard(data) { //データを受け取りカードを生成
     $(".page-content").empty();
     var check_box = ""
     for (var i in data) {
+      //IDに入らない要素をバインド
+      re = new RegExp("\'", "g");
+      rev2 = new RegExp("\"", "g");
+      var id = data[i].English.replace(re, "qttf")
+      id = id.replace(rev2, "qttf")
       if(data[i].Weak == false){
          check_box = " check_box_outline_blank'>check_box_outline_blank"
       }else{
         check_box = " check_box'>check_box"
       }
-      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p id='"+data[i].English+"' class='e_"+i+" e_w'>" +
+      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p id='"+id+"' class='e_"+i+" e_w'>" +
           data[i].English + "</p><p id='j_"+data[i].Japanese+"' class='j_"+i+" j_w'>" + data[i].Japanese + "</p></div>"
           +"<button  class='mdl-js-button  mdl-button--colored c_button'><i id='check_" + data[i].id + "' class='material-icons" + check_box + "</i></button>"
-          +"<button id='" + data[i].English + "' class='mic  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>mic</i></button>"
-          +"<button id='" + data[i].English + "' class='play  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>play_arrow</i></button></div>"
+          +"<button id='" + id + "' class='mic  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>mic</i></button>"
+          +"<button id='" + id + "' class='play  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>play_arrow</i></button></div>"
           );
           //文字数ごとにフォントサイズ変更
           //English
@@ -190,6 +195,9 @@ $(document).on('click','.vocalization_button',function(){
 $(document).on('click','.play',function(){
   console.log("aaaaa");
   var e_text=this.id;
+  //ID追加処理でバインドされた要素を複合
+  re = new RegExp("qttf", "g");
+  e_text = e_text.replace(re, "\'")
   var synthes = new SpeechSynthesisUtterance();
   synthes.voiceURI = 'native';
   synthes.volume = 1;
@@ -209,6 +217,9 @@ $(document).on('click','.mic',function(){
   var recognition = new webkitSpeechRecognition();
   recognition.lang = 'en';
   var correct_word = this.id;
+  //ID追加処理でバインドされた要素を複合
+  re = new RegExp("qttf", "g");
+  correct_word = correct_word.replace(re, "\'")
   recognition.maxAlternatives = 10;
   // 録音終了時トリガー
   recognition.addEventListener('result', function(event){

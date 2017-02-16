@@ -8,7 +8,6 @@ function createJson() { //exportフォームでJsonファイルを作成
             "English": "",
             "Japanese": ""
         }
-
         data[i].English = english_words[i];
         data[i].Japanese = japanese_words[i];
     }
