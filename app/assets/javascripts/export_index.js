@@ -36,7 +36,7 @@ function createJson() { //exportフォームでJsonファイルを作成
         temp.setAttribute("class", "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent");
         temp.setAttribute("download", file_title);
         links.removeChild(links.lastElementChild);
-        links.prependChild(temp);
+        links.appendChild(temp);
     }
     // componentHandler.upgradeDom();
 }
