@@ -9,8 +9,8 @@ function createCard(data) { //データを受け取りカードを生成
       }else{
         check_box = " check_box'>check_box"
       }
-      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p id='"+data[i].English+"' class='e_w'>" +
-          data[i].English + "</p><p id='j_"+data[i].Japanese+"' class='j_w'>" + data[i].Japanese + "</p></div>"
+      $(".page-content").append("<div class='c_box'><div class='e_card mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'><p id='"+data[i].English+"' class='e_"+i+" e_w'>" +
+          data[i].English + "</p><p id='j_"+data[i].Japanese+"' class='j_"+i+" j_w'>" + data[i].Japanese + "</p></div>"
           +"<button  class='mdl-js-button  mdl-button--colored c_button'><i id='check_" + data[i].id + "' class='material-icons" + check_box + "</i></button>"
           +"<button id='" + data[i].English + "' class='mic  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>mic</i></button>"
           +"<button id='" + data[i].English + "' class='play  mdl-js-button  mdl-button--colored c_button'><i class='material-icons'>play_arrow</i></button></div>"
@@ -18,9 +18,9 @@ function createCard(data) { //データを受け取りカードを生成
           //文字数ごとにフォントサイズ変更
           //English
           console.log(data[i].English.length);
-          auto_font_size(document.getElementById(data[i].English),data[i].English,11,23,'300%','200%','170%');
+          auto_font_size('.e_'+i,data[i].English,11,23,'300%','200%','170%');
           //Japanese
-          auto_font_size(document.getElementById('j_'+data[i].Japanese),data[i].Japanese,14,26,'180%','130%','110%');
+          auto_font_size('.j_'+i,data[i].Japanese,14,26,'180%','130%','110%')
       }
       componentHandler.upgradeDom();
 }
