@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     name = user_params[:Username]
     respond_to do |format|
       if User.find_by_sql(['select * from users where Username = :name',{name: name}]) == []
-        if @user.save
+        if @user.name.blank?||@user.pass.blank?||@user.mail.blank?||@user.save
           format.html { redirect_to '/user/sign_in', notice: 'User was successfully created.' }
           format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
         end
