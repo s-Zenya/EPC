@@ -16,3 +16,6 @@
  body{
    margin: 0;
  }
+ input[type="button"],input[type="submit"] {
+  -webkit-appearance: none;
+}
