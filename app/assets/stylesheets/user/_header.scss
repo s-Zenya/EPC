@@ -15,7 +15,7 @@
 .login_button{
   width: auto;
   height: 30px;
-  position: absolute; right: 5px;
+  margin-left: auto;
   border: solid 1px #7b68ee;
   border-radius: 5px;
   background-color: #3f51b5;
@@ -46,7 +46,7 @@ input.vocalization{
     margin-right: 50px;
   }
   .login_button{
-    margin-left: 10px;
+    margin-left: auto;
   }
   .vocalization_button{
     margin-right: 10px;
@@ -118,16 +118,14 @@ input.vocalization{
     width: 23px;
   }
   .mdl-layout__header-row{
-    width: 30px;
-    padding: 0 0 0 30px;
+    // width: 30px;
+    padding: 0 5px 0 30px;
   }
   .vocalization_button{
     margin-right: 2px;
   }
   .login_button{
-    margin-left: 3px;
+    // margin-left: auto;
     font-size: 10px;
   }
-}
-@media(max-width:520px) {
 }
