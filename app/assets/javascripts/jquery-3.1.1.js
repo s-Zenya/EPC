@@ -8759,7 +8759,7 @@
 // 		timeout: 0,
 // 		data: null,
 // 		dataType: null,
-// 		username: null,
+// 		name: null,
 // 		password: null,
 // 		cache: null,
 // 		throws: false,
@@ -9426,7 +9426,7 @@
 // 					options.type,
 // 					options.url,
 // 					options.async,
-// 					options.username,
+// 					options.name,
 // 					options.password
 // 				);
 //

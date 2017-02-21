@@ -12,17 +12,18 @@ class User::SessionController < ApplicationController
   def create
     @user=current_user
     user = User.find_by(user_params_name)
-    if user.present?
-      logger.debug("ooooooooooooooooooooooooooooooooooooooooooo"+user_params_password[:userpassword]+"QQQ")
-      if user.Userpassword == user_params_password[:userpassword]
+    # if user.present?
+      # logger.debug("ooooooooooooooooooooooooooooooooooooooooooo"+user_params_password[:password]+"QQQ")
+      # if user.password == user_params_password[:password]
+      if user && user.authenticate(user_params_password[:password])
         session[:user_id] = user.id
         redirect_to root_path
       else
         render :new
       end
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
   end
 
   def destroy
@@ -33,9 +34,9 @@ class User::SessionController < ApplicationController
 
   private
     def user_params_name
-      params.permit(:username)
+      params.permit(:name)
     end
     def user_params_password
-      params.permit(:userpassword)
+      params.permit(:password)
     end
 end
