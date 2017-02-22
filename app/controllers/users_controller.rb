@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @user=current_user
     session.delete :user_id
     @user = User.new
-
     # @user = current_user
   end
 
@@ -31,11 +30,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     name = user_params[:name]
     respond_to do |format|
-      if User.find_by_sql(['select * from users where name = :name',{name: name}]) == []
-        if @user.name.blank?||@user.password.blank?||@user.address.blank?||@user.save
-          format.html { redirect_to '/user/sign_in', notice: 'User was successfully created.' }
-          format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
-        end
+      if @user.save
+        format.html { redirect_to '/user/sign_in', notice: 'ユーザを作成しました' }
+        format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
       end
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
