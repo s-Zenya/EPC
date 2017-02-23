@@ -82,13 +82,14 @@ form textarea {
 
 @media(max-width:1140px) {
     .c_box{
-              margin: 90px auto 0 40px;
+              margin: 90px auto 0 4%;
     }
 }
 
 @media(max-width:800px) {
     .c_box{
-      width: 80%;
+      margin-left: 5%;
+      width: 90%;
     }
     .e_w {
     }
@@ -105,7 +106,7 @@ form textarea {
       display: block;
     }
     .c_box{
-      width: 83%;
-      margin: 4% 5% 0 5%;
+      // width: 83%;
+      margin-top: 4%;
     }
 }

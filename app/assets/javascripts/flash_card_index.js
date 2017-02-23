@@ -22,9 +22,9 @@ function createCard(data) { //データを受け取りカードを生成
           );
           //文字数ごとにフォントサイズ変更
           //English
-          auto_font_size('.e_'+i,data[i].English,11,23,'300%','200%','170%');
+          auto_font_size('.e_'+i,data[i].English,11,23,'280%','200%','170%');
           //Japanese
-          auto_font_size('.j_'+i,data[i].Japanese,14,26,'180%','130%','110%')
+          auto_font_size('.j_'+i,data[i].Japanese,14,26,'150%','120%','100%')
       }
       componentHandler.upgradeDom();
 }
