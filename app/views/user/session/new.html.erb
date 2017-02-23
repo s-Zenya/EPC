@@ -1,10 +1,11 @@
 <%= render :partial => "/partial/head" %>
 <h3 class="sign_in_title">Please sign in</h3>
 <h4 id="notice" class="notice"><%= notice %></h4>
+<h4 id="alert" class="alert"><%= alert %></h4>
 <%= form_tag user_sign_in_path do %>
 <div class="actions">
-  Username<%= text_field_tag :username %><br><br>
-  Pass　　 <%= password_field_tag :userpassword %><br><br>
+  name<%= text_field_tag :name %><br><br>
+  Pass　　 <%= password_field_tag :password %><br><br>
 </div>
 <%= submit_tag 'Sign in',class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <% end %>

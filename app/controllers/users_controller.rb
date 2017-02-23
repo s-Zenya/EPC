@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @user=current_user
     session.delete :user_id
     @user = User.new
-
     # @user = current_user
   end
 
@@ -29,13 +28,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    name = user_params[:Username]
+    name = user_params[:name]
     respond_to do |format|
-      if User.find_by_sql(['select * from users where Username = :name',{name: name}]) == []
-        if @user.name.blank?||@user.pass.blank?||@user.mail.blank?||@user.save
-          format.html { redirect_to '/user/sign_in', notice: 'User was successfully created.' }
-          format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
-        end
+      if @user.save
+        format.html { redirect_to '/user/sign_in', notice: 'ユーザを作成しました' }
+        format.json { redirect_to '/user/sign_in', status: :ok, location: @user }
       end
       format.html { render :new }
       format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -76,6 +73,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.fetch(:user, {})
-      params.require(:user).permit(:Username,:Userpassword,:Useraddress)
+      params.require(:user).permit(:name,:password,:address,:password_confirmation)
     end
 end

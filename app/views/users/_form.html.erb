@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "つ") %> 入力された値が間違っています:</h2>
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,9 +11,10 @@
   <% end %>
 
   <div class="actions">
-    User Name <%= f.text_field :Username,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form ' %><br><br>
-    Pass　　　<%= f.text_field :Userpassword,maxlength:'15',placeholder:'15文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form',type:'password' %><br><br>
-    mail　　　 <%= f.text_field :Useraddress,type:"email",class:'input_form' %><br><br>
+    User Name <%= f.text_field :name,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form ' %><br><br>
+    Password　　　<%= f.password_field :password,maxlength:'15',placeholder:'15文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form' %><br><br>
+    Password(again)　　　<%= f.password_field :password_confirmation,maxlength:'15',placeholder:'15文字まで',pattern:"^[0-9A-Za-z]+$",size:20,class:'input_form' %><br><br>
+    mail　　　 <%= f.text_field :address,type:"email",class:'input_form' %><br><br>
     <%= f.submit class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
   </div>
 <% end %>

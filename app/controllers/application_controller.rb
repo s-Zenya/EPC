@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
     payload[:host] = request.host
-    payload[:username] = current_user.try(:username)
+    payload[:name] = current_user.try(:name)
     payload[:userpass] = current_user.try(:userpass)
   end
 

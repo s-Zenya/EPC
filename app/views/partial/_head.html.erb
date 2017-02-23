@@ -11,7 +11,7 @@
     <% if current_user.blank?  %>
     <%= link_to 'Login','/user/sign_in',class:"mdl-button mdl-js-button mdl-button--raised  login_button" %>
     <% else %>
-    <span class="current_user"><%= @current_user.Username%>さん</span>
+    <span class="current_user"><%= @current_user.name%>さん</span>
     <%= link_to 'LogOut','user/sign_out',:method => 'delete',class:"mdl-button mdl-js-button mdl-button--raised  login_button" %>
     <% end %>
   </div>

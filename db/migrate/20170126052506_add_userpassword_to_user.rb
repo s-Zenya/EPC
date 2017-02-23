@@ -1,5 +1,5 @@
-class AddUserpasswordToUser < ActiveRecord::Migration[5.0]
+class AddpasswordToUser < ActiveRecord::Migration[5.0]
   def change
-    add_column :users, :Userpassword, :string
+    add_column :users, :password, :string
   end
 end
