@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post 'editing_delete' => 'editing#delete'
   get 'editing_edit' => 'editing#edit'
   post '/edit/update' => 'editing#update'
+  post 'editing_to_json' => 'editing#toJson'
 
   # ログイン処理
   namespace :user do

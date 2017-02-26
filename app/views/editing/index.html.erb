@@ -15,6 +15,7 @@
                   <%= userfile.filename %>
                   <button class='editing_button mdl-js-button  mdl-button--colored' onclick="deleteCards('<%=userfile.id%>')">delete</button>
                   <%= link_to "edit", editing_edit_url(:fileId => userfile.id), class: 'editing_button_edit editing_button mdl-js-button  mdl-button--colored', method: :get %>
+                  <button class='editing_button editing_button_download mdl-js-button  mdl-button--colored' onclick="DbToJson('<%=userfile.id%>')">download</button>
               </span>
             </li>
           <% i+=1 %>
