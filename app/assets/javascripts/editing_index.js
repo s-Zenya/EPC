@@ -30,17 +30,9 @@ function DbToJson(fileId){
     },
   });
     return xhr.done(function(result) {
-        console.log( '通信いけたでおおおお！');
         obj=JSON.parse(xhr.responseText);
         w_data=obj.homearr;
-        console.log(w_data[1].English);
-        console.dir(w_data);
         ToJson(w_data);
-
-
-
-
-
       }).fail(function(result) {
         console.log( '通信失敗！');
       });
@@ -48,13 +40,6 @@ function DbToJson(fileId){
 
 
 function ToJson(data) { //DBのデータでJsonファイルを作成
-  // var data = new Array();
-
-  // for (i = 0; i < data.length-1 && i < data.length-1; i++) {
-  //     data[i] = {
-  //         "English": "",
-  //         "Japanese": ""
-  //     }
   console.dir(data);
   var file_title;
   // if(document.querySelector('#textbox_1').value != ''){　//textbox_1に何も入力されていないと実行できないようにするif文
