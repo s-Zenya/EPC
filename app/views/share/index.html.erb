@@ -1,0 +1,9 @@
+<%= render :partial => "/partial/share_head" %>
+<div class='new'>
+  <h1>最新のカード</h1>
+  <% if @userfiles.present? %>
+      <% for userfile in @userfiles %>
+        <%= userfile.filename %>
+      <% end %>
+  <% end %>
+</div>
