@@ -1,9 +1,26 @@
 <%= render :partial => "/partial/share_head" %>
-<div class='new'>
-  <h1>最新のカード</h1>
-  <% if @userfiles.present? %>
+<h3 class="edit_title">Release</h3>
+<h4 id="notice" class="notice"><%= notice %></h4>
+<div>
+  <div class="editing_field">
+    <% if @userfiles.present? %>
+    <ul class="file_list demo-list-item mdl-list">
+      <% i=1 %>
       <% for userfile in @userfiles %>
-        <%= userfile.filename %>
+          <% if !(i%2==1) then %>
+            <li class="list_color">
+          <% else %>
+            <li class="list_non_color">
+          <% end %>
+              <span class="mdl-list__item-primary-content">
+                  <%= userfile.filename %>
+                  <%= link_to "release", release_files_edit_url(:fileId => userfile.id), class: 'editing_button_edit editing_button mdl-js-button  mdl-button--colored', method: :get %>
+              </span>
+            </li>
+          <% i+=1 %>
+        <% end %>
       <% end %>
-  <% end %>
+    </ul>
+  </div>
 </div>
+<%= link_to 'Back', root_path,class:'back_button mdl-button mdl-js-button mdl-button--primary' %>

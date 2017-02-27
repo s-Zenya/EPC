@@ -1,9 +1,9 @@
 class ShareController < ApplicationController
-  def index
+  def top
     @userfiles = Userfile.find_by_sql(['select * from release_files order by updated_at'])
   end
 
-  def create
+  def index
     if current_user.present?
       userId=current_user.id
       @userfiles=Userfile.find_by_sql(['select * from userfiles where user_id = :userid',{userid: userId}])
@@ -11,10 +11,25 @@ class ShareController < ApplicationController
   end
 
   def edit
+    userId=current_user.id
     fileId = params[:fileId]
-    @release_files = ReleaseFile.new;
-    @release_files.userfiles_id = fileId
-    p @release_files
+    @userfiles=Userfile.find_by_sql(['select * from userfiles where user_id = :userid and id = :id',{userid: userId, id: fileId}])
+    @release_file = ReleaseFile.new;
+    @release_file.userfiles_id = fileId
+    @release_file.filename =@userfiles[0].filename
+  end
+
+  def create
+    respond_to do |format|
+    @release_file = ReleaseFile.new(params[:release_file])
+    p @release_file
+      if @release_file.save
+        format.html { redirect_to '/share/create', notice: 'ファイルを公開しました' }
+        format.json { redirect_to '/share/create', status: :ok, location: @release_file }
+      end
+      format.html { render :index }
+      format.json { render json: @release_file.errors, status: :unprocessable_entity }
+    end
   end
 
 end

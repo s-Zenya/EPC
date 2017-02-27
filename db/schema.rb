@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170226055411) do
     t.string   "filename"
     t.string   "description"
     t.integer  "popularity"
+    t.string   "tag"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["userfiles_id"], name: "index_release_files_on_userfiles_id"

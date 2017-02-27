@@ -1,1 +1,20 @@
-sss
+<%= render :partial => "/partial/share_head" %>
+<%= form_for(@release_file) do |f| %>
+<% if @release_file.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(release_file.errors.count, "つ") %> 入力された値が間違っています:</h2>
+    <ul>
+    <% @release_file.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+  <div class="actions">
+    <%= f.hidden_field :userfiles_id %>
+    fileName <%= f.text_field :filename,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:10,class:'input_form ' %><br><br>
+    description <%= f.text_area :description,maxlength:'150',placeholder:'150文字まで',pattern:"^[0-9A-Za-z]+$",size:150,class:'input_form' %><br><br>
+    tag <%= f.text_field :tag,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:10,class:'input_form' %><br><br>
+    <%= f.submit class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+  </div>
+<% end %>

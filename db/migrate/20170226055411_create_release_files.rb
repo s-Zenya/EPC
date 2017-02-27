@@ -5,7 +5,7 @@ class CreateReleaseFiles < ActiveRecord::Migration[5.0]
       t.string :filename
       t.string :description
       t.integer :popularity
-
+      t.string :tag
       t.timestamps
     end
   end
