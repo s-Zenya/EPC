@@ -60,8 +60,6 @@ function ToJson(data) { //DBのデータでJsonファイルを作成
   var blob = new Blob([data], {
       type: "text/json"
   });
-  console.dir(blob);
-
   var url = window.URL || window.webkitURL;
   var blobURL = url.createObjectURL(blob);
   var a = document.createElement('a');

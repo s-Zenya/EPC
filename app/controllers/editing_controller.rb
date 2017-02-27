@@ -52,14 +52,11 @@ class EditingController < ApplicationController
   end
 
   def toJson
+    userId=current_user.id
     fileId = params[:fileId]
-    userfile = Userfile.find_by_sql(['select * from userfiles where id = :id',{id: fileId}])
-    # p @userfile[0].filename
+    userfile = Userfile.find_by_sql(['select * from userfiles where id = :id and user_id = :user',{id: fileId,user: userId}])
     words = Word.find_by_sql(['select English,Japanese from words where fileId = :fileId',{fileId: fileId}])
     file = [{"words":words},{"filename": userfile[0].filename}]
-
-    # words+=userfile[0].filename
-    p userfile
     render json: { :homearr => file } and return if request.xhr?
   end
 end
