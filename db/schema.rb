@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221134650) do
+ActiveRecord::Schema.define(version: 20170226055411) do
+
+  create_table "release_files", force: :cascade do |t|
+    t.integer  "userfiles_id"
+    t.string   "filename"
+    t.string   "description"
+    t.integer  "popularity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["userfiles_id"], name: "index_release_files_on_userfiles_id"
+  end
 
   create_table "userfiles", force: :cascade do |t|
     t.integer  "user_id"

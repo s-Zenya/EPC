@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   post 'editing_delete' => 'editing#delete'
   get 'editing_edit' => 'editing#edit'
   post '/edit/update' => 'editing#update'
+  get 'share' => 'share#index'
+  get '/share/create' => 'share#create'
+  get 'release_files_edit' => 'share#edit'
   post 'editing_to_json' => 'editing#toJson'
 
   # ログイン処理

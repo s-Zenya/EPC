@@ -1,0 +1,2 @@
+class ReleaseFile < ApplicationRecord
+end
