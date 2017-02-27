@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'share' => 'share#index'
   get '/share/create' => 'share#create'
   get 'release_files_edit' => 'share#edit'
+  post 'editing_to_json' => 'editing#toJson'
 
   # ログイン処理
   namespace :user do

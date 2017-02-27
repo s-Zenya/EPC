@@ -50,4 +50,16 @@ class EditingController < ApplicationController
       render status: 401
     end
   end
+
+  def toJson
+    fileId = params[:fileId]
+    userfile = Userfile.find_by_sql(['select * from userfiles where id = :id',{id: fileId}])
+    # p @userfile[0].filename
+    words = Word.find_by_sql(['select English,Japanese from words where fileId = :fileId',{fileId: fileId}])
+    file = [{"words":words},{"filename": userfile[0].filename}]
+
+    # words+=userfile[0].filename
+    p userfile
+    render json: { :homearr => file } and return if request.xhr?
+  end
 end
