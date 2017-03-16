@@ -12,37 +12,34 @@
 
 ActiveRecord::Schema.define(version: 20170226055411) do
 
-  create_table "release_files", force: :cascade do |t|
-    t.integer  "userfiles_id"
+  create_table "release_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "userfiles_id"
     t.string   "filename"
     t.string   "description"
     t.integer  "popularity"
     t.string   "tag"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["userfiles_id"], name: "index_release_files_on_userfiles_id"
   end
 
-  create_table "userfiles", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "userfiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "user_id"
     t.string   "filename"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id", "filename"], name: "index_userfiles_on_id_and_filename", unique: true
-    t.index ["user_id"], name: "index_userfiles_on_user_id"
+    t.index ["id", "filename"], name: "index_userfiles_on_id_and_filename", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "password"
     t.string   "address"
     t.string   "password_digest"
-    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
-  create_table "words", force: :cascade do |t|
+  create_table "words", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "English"
