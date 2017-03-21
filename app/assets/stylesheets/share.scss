@@ -1,3 +1,47 @@
 // Place all the styles related to the share controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search{
+  margin-right: 5px;
+}
+.search_button{
+  width: 40px;
+  border-radius: 10px;
+  color: white;
+  background-color: #3f51b5;
+  margin-right: 10px;
+}
+input.search{
+  margin-right: 1px;
+  width: 350px;
+}
+@media(max-width:1140px) {
+  input.search{
+    width: 300px;
+
+  }
+  .search_button{
+    margin-right: 10px;
+
+  }
+}
+@media(max-width:800px) {
+  input.search{
+    width: 140px;
+
+  }
+  .search_button{
+    margin-right: 2px;
+  }
+  .search_button{
+    margin-right: 5px;
+  }
+}
+@media(max-width:520px) {
+  input.search{
+    width: 125px;
+  }
+  .search_button{
+    margin-right: 2px;
+  }
+}
