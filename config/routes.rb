@@ -24,11 +24,13 @@ Rails.application.routes.draw do
   post 'editing_delete' => 'editing#delete'
   get 'editing_edit' => 'editing#edit'
   post '/edit/update' => 'editing#update'
-  get 'share' => 'share#top'
+  get '/share' => 'share#top'
   get '/share/create' => 'share#index'
   get 'release_files_edit' => 'share#edit'
   post 'release_files' => 'share#create'
   post 'editing_to_json' => 'editing#toJson'
+
+  get '/share/:id', to: 'share#show', as: 'fileshow'
 
   # ログイン処理
   namespace :user do

@@ -4,6 +4,8 @@
   <% if @userfiles.present? %>
       <% for userfile in @userfiles %>
         <%= userfile.filename %>
+        <%= userfile.description %>
+        <%= link_to 'Show', fileshow_path(userfile) %><br>
       <% end %>
   <% end %>
 </div>

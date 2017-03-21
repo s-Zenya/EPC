@@ -32,4 +32,7 @@ class ShareController < ApplicationController
     end
   end
 
+  def show
+
+  end
 end
