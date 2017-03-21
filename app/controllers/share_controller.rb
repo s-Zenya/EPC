@@ -10,6 +10,17 @@ class ShareController < ApplicationController
     end
   end
 
+  def search
+    if current_user.present?
+      key = params[:key]
+      p key
+      userId=current_user.id
+      @userfiles = Userfile.find_by_sql(['select * from release_files where tag = :key order by updated_at',{key: key}])
+      p @userfiles
+      render json: { :homearr => @userfiles } and return if request.xhr?
+    end
+  end
+
   def edit
     userId=current_user.id
     fileId = params[:fileId]
