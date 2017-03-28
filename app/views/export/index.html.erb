@@ -15,7 +15,7 @@
     <div class="json_to_db">
       <label for="file" class="file">
         <input type="file" name="file" value="" id="file">
-        <div id="JsonToDb" class="mdl-button mdl-js-button mdl-button--accent">JSONをDBに保存</div>
+        <div id="JsonToDb" class="mdl-button mdl-js-button mdl-button--accent">ファイルをDBに保存</div>
       </label>
     <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=importJson() value=決定><br><br>
   </div>
@@ -36,7 +36,7 @@
   <% if current_user.blank? #userが存在するかの確認 %>
     <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ダウンロードリンクの生成>
   <% else %>
-    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=DBに保存 remote:true>
+    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=保存 remote:true>
 
     <label for="file" class="file">
       <input type="file" name="file" value="" id="file">

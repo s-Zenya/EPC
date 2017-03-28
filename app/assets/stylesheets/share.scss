@@ -15,6 +15,17 @@ input.search{
   margin-right: 1px;
   width: 350px;
 }
+
+.demo-card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+  float: left;
+  margin: 50px;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+}
+
 @media(max-width:1140px) {
   input.search{
     width: 300px;

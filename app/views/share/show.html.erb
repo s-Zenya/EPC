@@ -1,0 +1,45 @@
+<%= render :partial => "/partial/head" %>
+<li class="mdl-list__item mdl-list__item--three-line">
+  <span class="mdl-list__item-primary-content">
+    <i class="material-icons mdl-list__item-avatar">person</i>
+    <span><%= @release_file.filename %></span>
+    <span class="mdl-list__item-text-body">
+      <%= @release_file.description %>
+    </span>
+  </span>
+  <span class="mdl-list__item-secondary-content">
+    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+  </span>
+  <%= @release_file.updated_at %>
+</li>
+
+<div class="form">以下の内容で、自分のフラッシュカードとして保存できます<br>
+  <div class="mdl-textfield mdl-js-textfield">
+    <!-- <input class="mdl-textfield__input" type="text" id="title"> -->
+    <%= text_field_tag 'title', @userfile.filename, placeholder: "変更後のタイトル名", class: "mdl-textfield__input" %>
+    <label class="mdl-textfield__label" for="title">変更後のタイトル名</label>
+  </div></br>
+  <div class="mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english"><% for word in @words do %>
+<%=word.English%><% end %></textarea>
+    <label class="mdl-textfield__label" for="english">　　　　please write English here...</label>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input lined" type="text" rows="25" id="japanese"><% for word in @words do %>
+<%= word.Japanese %><% end %></textarea>
+    <label class="mdl-textfield__label" for="japanese">　　　　please write Japanese here...</label>
+  </div></br>
+  <% if current_user.blank? #userが存在するかの確認 %>
+    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=createJson() value=ファイルで保存>
+  <% else %>
+    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=CardsToDb() value=保存 remote:true>
+
+    <label for="file" class="file">
+      <input type="file" name="file" value="" id="file">
+    </label>
+  <% end %>
+  <div class="error_msg">
+  </div>
+  </br>
+</div>
+<%= link_to 'Back', '../share',class:'back_button mdl-button mdl-js-button mdl-button--primary' %>
