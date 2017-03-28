@@ -1,0 +1,14 @@
+<%= render :partial => "/partial/share_head" %>
+<div class='search'>
+  <h1>検索結果</h1>
+
+  <div class="share_list">
+    <% if @userfiles.present? %>
+        <% for userfile in @userfiles %>
+          <a><%= userfile.filename %></a>
+          <%= userfile.description %>
+          <%= link_to 'Show', fileshow_path(userfile) %><br>
+        <% end %>
+    <% end %>
+  </div>
+</div>

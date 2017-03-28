@@ -4,6 +4,14 @@
       <a href="/top" class="header_title">EPC</a>
     </span>
     <input id="tag_search" class="tag_search" type="text" placeholder="タグで検索"></form>
+
+
+    <%= form_tag share_search_path do %>
+    <%= text_field_tag :key, params[:key] %>
+    <%= submit_tag "search", :name => nil %>
+  </p>
+<% end %>
+
     <button id="key_search" class="search_button mdl-js-button  mdl-button--colored">
       <i class="material-icons  ">search</i>
     </button>
