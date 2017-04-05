@@ -15,9 +15,11 @@ input.search{
   margin-right: 1px;
   width: 350px;
 }
-
 .new_arrival{
+  margin: 30px;
+  text-align: center;
   color: gray;
+  font-size: calc(5vw + 10px);
 }
 
 .demo-card-square.mdl-card {
@@ -35,14 +37,15 @@ input.search{
     url(/images/anki_card.png) bottom right 15% no-repeat #46B6AC;
     background-size: contain;
 }
-
+.mdl-card__supporting-text{
+  margin-bottom: 10px;
+}
 .mdl-list__item{
   background-color: silver;
 }
 @media(max-width:1140px) {
   input.search{
     width: 300px;
-
   }
   .search_button{
     margin-right: 10px;
@@ -67,5 +70,9 @@ input.search{
   }
   .search_button{
     margin-right: 2px;
+  }
+  .demo-card-square{
+    margin: 20px !important;
+    width: 80vw !important;
   }
 }
