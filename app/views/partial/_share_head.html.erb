@@ -3,18 +3,18 @@
     <span class="mdl-layout-title" id="big_title">
       <a href="/top" class="header_title">EPC</a>
     </span>
-    <input id="tag_search" class="tag_search" type="text" placeholder="タグで検索"></form>
+    <!-- <input id="tag_search" class="tag_search" type="text" placeholder="タグで検索"></form> -->
 
 
     <%= form_tag share_search_path do %>
-    <%= text_field_tag :key, params[:key] %>
-    <%= submit_tag "search", :name => nil %>
+    <%= text_field_tag :key, params[:key], placeholder: 'タグで検索' %>
+    <%= submit_tag "search", :name => nil, class:"mdl-button dl-js-button mdl-button--raised share_search_button" %>
   </p>
 <% end %>
 
-    <button id="key_search" class="search_button mdl-js-button  mdl-button--colored">
+    <!-- <button id="key_search" class="search_button mdl-js-button  mdl-button--colored">
       <i class="material-icons  ">search</i>
-    </button>
+    </button> -->
     <!-- userが存在するかの確認 -->
     <% if current_user.blank?  %>
     <%= link_to 'Login','/user/sign_in',class:"mdl-button mdl-js-button mdl-button--raised  login_button" %>
