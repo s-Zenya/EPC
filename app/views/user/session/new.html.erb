@@ -1,12 +1,12 @@
 <%= render :partial => "/partial/head" %>
-<%= link_to 'Sign up','SignUp',class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored sign_up_button" %>
+<%= link_to 'Sign up',sign_up_path,class:"mdl-button mdl-js-button mdl-button--raised mdl-button--colored sign_up_button" %>
 <h3 class="sign_in_title">Please sign in</h3>
 <h4 id="notice" class="notice"><%= notice %></h4>
 <h4 id="alert" class="alert"><%= alert %></h4>
 <%= form_tag user_sign_in_path do %>
 <div class="actions">
-  name<%= text_field_tag :name %><br><br>
-  Pass　　 <%= password_field_tag :password %><br><br>
+  <p>name</p><%= text_field_tag :name %><br><br>
+  <p>Pass</p><%= password_field_tag :password %><br><br>
 </div>
 <%= submit_tag 'Sign in',class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
 <% end %>
