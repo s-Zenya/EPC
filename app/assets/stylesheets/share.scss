@@ -16,16 +16,29 @@ input.search{
   width: 350px;
 }
 
+.new_arrival{
+  color: gray;
+}
+
 .demo-card-square.mdl-card {
   width: 320px;
   height: 320px;
   float: left;
   margin: 50px;
 }
+.mdl-card__title{
+  background-color: mediumseagreen;
+}
 .demo-card-square > .mdl-card__title {
   color: #fff;
+  background:
+    url(/images/anki_card.png) bottom right 15% no-repeat #46B6AC;
+    background-size: contain;
 }
 
+.mdl-list__item{
+  background-color: silver;
+}
 @media(max-width:1140px) {
   input.search{
     width: 300px;

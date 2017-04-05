@@ -45,11 +45,15 @@ class ShareController < ApplicationController
 
   def show
     @release_file = ReleaseFile.find_by(id: params[:id])
+    file = Userfile.find_by(id: @release_file.userfiles_id)
+    p file
+    @releasing_user = User.find_by(id: file.user_id)
     @userfile = Userfile.new
     @userfile.user_id = session[:user_id]
     @userfile.filename = @release_file.filename
+    @user = User.find_by(id: @userfile.user_id)
     @words = Word.where(fileid: @release_file.id)
-    p @userfile
+    p @user
     p  "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
     p @words
   end

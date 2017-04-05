@@ -1,14 +1,18 @@
 <%= render :partial => "/partial/head" %>
 <li class="mdl-list__item mdl-list__item--three-line">
   <span class="mdl-list__item-primary-content">
-    <i class="material-icons mdl-list__item-avatar">person</i>
-    <span><%= @release_file.filename %></span>
+    <i class="material-icons mdl-list__item-avatar">message</i>
+    <span>
+      ファイル名：  <%= @release_file.filename %>
+    </span>
     <span class="mdl-list__item-text-body">
-      <%= @release_file.description %>
+      ファイルの説明：  <%= @release_file.description %>
     </span>
   </span>
   <span class="mdl-list__item-secondary-content">
-    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+    <span>
+      作成者：  <%= @releasing_user.name %>
+    </span>
   </span>
   <%= @release_file.updated_at %>
 </li>
