@@ -4,7 +4,7 @@ class ShareController < ApplicationController
     if key.present?
       @userfiles = Userfile.find_by_sql(['select * from release_files where tag = :key order by updated_at',{key: key}])
     else
-      @userfiles = Userfile.find_by_sql(['select * from release_files order by updated_at'])
+      @userfiles = Userfile.find_by_sql(['select * from release_files order by updated_at desc'])
     end
   end
 
@@ -38,6 +38,8 @@ class ShareController < ApplicationController
 
   def show
     @release_file = ReleaseFile.find_by(id: params[:id])
+    # 秒の切り捨て
+    Time.at(@release_file.updated_at.to_i / 60 * 60) # => 2013-04-04 12:34:00 +0900
     file = Userfile.find_by(id: @release_file.userfiles_id)
     @releasing_user = User.find_by(id: file.user_id)
     @userfile = Userfile.new

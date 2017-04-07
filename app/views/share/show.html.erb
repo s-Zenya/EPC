@@ -3,18 +3,19 @@
   <span class="mdl-list__item-primary-content">
     <i class="material-icons mdl-list__item-avatar">message</i>
     <span>
-      ファイル名：  <%= @release_file.filename %>
+      ファイル名： <%= @release_file.filename %>
     </span>
     <span class="mdl-list__item-text-body">
-      ファイルの説明：  <%= @release_file.description %>
+      ファイルの説明： <%= @release_file.description %>
     </span>
   </span>
   <span class="mdl-list__item-secondary-content">
     <span>
-      作成者：  <%= @releasing_user.name %>
+      作成者： <%= @releasing_user.name %><br>
+      タグ： <%= @release_file.tag %>
     </span>
   </span>
-  <%= @release_file.updated_at %>
+  <span class="update_time"><%= @release_file.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></spam>
 </li>
 
 <div class="form">以下の内容で、自分のフラッシュカードとして保存できます<br>
