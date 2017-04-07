@@ -13,8 +13,29 @@
 .json_to_db{;
   margin-top: 20px;
 }
+.export_file_name{
+  // position:relative;
+  // right: 0px;
+}
+@media(max-width:1200px) {
+  .export_file_name{
+    // position: relative;
+    // right: 100px;
+  }
+}
+@media(max-width:990px) {
+  .export_file_name{
+    // position: relative;
+    // right: 0px;
+  }
+}
 @media(max-width:500px) {
   .json_to_db label{
     width: 68%;
   }
+  .export_file_name{
+    // position: relative;
+    // right: 0px;
+  }
+
 }

@@ -7,7 +7,7 @@
 
 
     <%= form_tag share_search_path do %>
-    <%= text_field_tag :key, params[:key], placeholder: 'タグで検索' %>
+    <%= text_field_tag :key, params[:key], placeholder: 'タグで検索', class:'share_search_field' %>
     <%= submit_tag "search", :name => nil, class:"mdl-button dl-js-button mdl-button--raised share_search_button" %>
   </p>
 <% end %>
