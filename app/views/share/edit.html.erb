@@ -12,8 +12,8 @@
 <% end %>
   <div class="actions">
     <%= f.hidden_field :userfiles_id %>
-    fileName <%= f.text_field :filename,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:10,class:'input_form ' %><br><br>
-    description <%= f.text_area :description,maxlength:'150',placeholder:'150文字まで',pattern:"^[0-9A-Za-z]+$",size:150,class:'input_form' %><br><br>
+    fileName <%= f.text_field :filename,maxlength:'15',placeholder:'15文字まで',size:10,class:'input_form ' %><br><br>
+    description <%= f.text_area :description,maxlength:'100',placeholder:'100文字まで',size:150,class:'input_form' %><br><br>
     tag <%= f.text_field :tag,maxlength:'10',placeholder:'10文字まで',pattern:"^[0-9A-Za-z]+$",size:10,class:'input_form' %><br><br>
     <%= f.submit class:"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
   </div>

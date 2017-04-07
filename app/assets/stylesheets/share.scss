@@ -21,15 +21,20 @@ input.search{
   color: gray;
   font-size: calc(5vw + 10px);
 }
-
+.share_list{
+  margin-left: 5.5vw;
+}
 .demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
+  width: 200px;
+  height: 250px;
   float: left;
-  margin: 50px;
+  margin: 30px;
 }
 .mdl-card__title{
   background-color: mediumseagreen;
+}
+.mdl-card__title-text{
+  background: rgba(0,0,0,0.2);
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
@@ -37,19 +42,23 @@ input.search{
     url(/images/anki_card.png) bottom right 15% no-repeat #46B6AC;
     background-size: contain;
 }
-.mdl-card__supporting-text{
+.file_description{
   margin-bottom: 10px;
+  padding-bottom: 60px;
 }
 .mdl-list__item{
   background-color: silver;
 }
+.update_time{
+  color: dimgrey;
+}
+
 @media(max-width:1140px) {
   input.search{
     width: 300px;
   }
   .search_button{
     margin-right: 10px;
-
   }
 }
 @media(max-width:800px) {
@@ -75,4 +84,10 @@ input.search{
     margin: 20px !important;
     width: 80vw !important;
   }
+  .mdl-list__item{
+    height: 150px;
+  }
+ .mdl-list__item-primary-content,.mdl-list__item-secondary-content{
+   margin-top: -75px;
+ }
 }

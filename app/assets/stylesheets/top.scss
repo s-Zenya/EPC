@@ -24,12 +24,26 @@
   margin-left: 0.622%;
   margin-right: 0.622%;
   margin-bottom: 10px;
-
+}
+.flash_card_top{
+  background:
+    url(/images/flashcard.png) bottom right 15% no-repeat #46B6AC;
+    background-size: cover;
+}
+.share_top{
+  background:
+    url(/images/share.png) bottom right 15% no-repeat #46B6AC;
+    background-size: cover;
+}
+.sign_up_top{
+  background:
+    url(/images/sign_up.png) bottom right 15% no-repeat #46B6AC;
+    background-size: cover;
+    background-position: right top;
 }
 .demo-card-wide > .mdl-card__title {
   color: #fff;
   height: 200px;
-  background: url('../assets/demos/welcome_card.jpg') center / cover;
 }
 .demo-card-wide > .mdl-card__menu {
   color: #fff;
