@@ -17,3 +17,17 @@
   text-align: center;
   line-height: 3px;
 }
+.share_search_field{
+  width: 300px;
+}
+
+@media(max-width:800px) {
+  .share_search_field{
+    width: 200px;
+  }
+}
+@media(max-width:500px) {
+  .share_search_field{
+    width: 150px;
+  }
+}
