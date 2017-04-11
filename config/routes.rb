@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post 'editing_delete' => 'editing#delete'
   get 'editing_edit' => 'editing#edit'
   post '/edit/update' => 'editing#update'
-  get '/share' => 'share#top'
+  post 'share' => 'share#top'
   get '/share/create' => 'share#index'
   get 'release_files_edit' => 'share#edit'
   post 'release_files' => 'share#create'
