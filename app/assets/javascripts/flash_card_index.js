@@ -71,7 +71,7 @@ function flip(wordId, weak){
     },
   });
   return xhr.done(function(result) {
-      console.log( '通信いけたでおおおお！');
+      console.log( '通信成功！');
     }).fail(function(result) {
       console.log( '通信失敗！');
     });
@@ -237,13 +237,10 @@ $(document).on('click','.mic',function(){
       if(reserved_word.item(0).item(i).transcript.toUpperCase() == correct_word.toUpperCase()){
         if(reserved_word.item(0).item(i).confidence > 0.85){
           judge = "Perfect!!"
-          console.log("い")
         }else if(reserved_word.item(0).item(i).confidence > 0.65){
           judge = "Good"
-          console.log("ろ")
         }else if(reserved_word.item(0).item(i).confidence > 0.45){
           judge = "Nice"
-          console.log("は")
         }else{
           judge = "Bad…"
         }
@@ -251,7 +248,7 @@ $(document).on('click','.mic',function(){
       }
     }
     if(i == reserved_word.item(0).length){
-      judge = "あたしはこう聞こえたわよ♡"
+      judge = "このように認識しました"
       i = 0;
     }
     console.log(i);
