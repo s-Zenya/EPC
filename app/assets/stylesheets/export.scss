@@ -14,19 +14,19 @@
   margin-top: 20px;
 }
 .export_file_name{
-  // position:relative;
-  // right: 0px;
+  position:relative;
+  right: 30%;
 }
-@media(max-width:1200px) {
-  .export_file_name{
-    // position: relative;
-    // right: 100px;
-  }
-}
+// @media(max-width:1200px) {
+//   .export_file_name{
+//     position: relative;
+//     right: 100px;
+//   }
+// }
 @media(max-width:990px) {
   .export_file_name{
-    // position: relative;
-    // right: 0px;
+    position: relative;
+    right: 0px;
   }
 }
 @media(max-width:500px) {
