@@ -52,7 +52,20 @@ input.search{
 .update_time{
   color: dimgrey;
 }
-
+.delete_button{
+  width: 50px;
+  height: 21px;
+  padding-top: 2px;
+  text-align: center;
+  position:relative; bottom: 4px;
+  float: right;
+  margin-right: 5px;
+  border: solid 1px #ff66a3;
+  border-radius: 5px;
+  background-color: #ff4481;
+  color: #fff;
+  text-decoration: none;
+}
 @media(max-width:1140px) {
   input.search{
     width: 300px;

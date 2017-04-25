@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post 'release_files' => 'share#create'
   post 'editing_to_json' => 'editing#toJson'
   post 'share_search' => 'share#search'
+  get 'share_delete' => 'share#delete'
 
   get '/share/:id', to: 'share#show', as: 'fileshow'
 

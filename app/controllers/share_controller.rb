@@ -12,6 +12,11 @@ class ShareController < ApplicationController
     if current_user.present?
       userId=current_user.id
       @userfiles=Userfile.find_by_sql(['select * from userfiles where user_id = :userid',{userid: userId}])
+      release = Userfile.find_by_sql(['select * from release_files'])
+      @release_id = Array.new
+      for release_id in release do
+        @release_id.push(release_id.userfiles_id.to_i)
+      end
     end
   end
 
@@ -47,5 +52,13 @@ class ShareController < ApplicationController
     @userfile.filename = @release_file.filename
     @user = User.find_by(id: @userfile.user_id)
     @words = Word.where(fileid: @release_file.id)
+  end
+
+  def delete
+    fileId = params[:fileId]
+    p "==============================================-"
+    p fileId
+    ReleaseFile.destroy_all(['userfiles_id = :id',{id: fileId}])
+    redirect_to '/share/create'
   end
 end

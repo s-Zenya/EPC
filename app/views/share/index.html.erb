@@ -14,7 +14,11 @@
           <% end %>
               <span class="mdl-list__item-primary-content">
                   <%= userfile.filename %>
+                  <% if @release_id.include?(userfile.id) %>
+                  <%= link_to "delete", share_delete_path(:fileId => userfile.id), class: 'editing_button_edit delete_button mdl-js-button  mdl-button--colored', method: :get %>
+                  <% else %>
                   <%= link_to "release", release_files_edit_url(:fileId => userfile.id), class: 'editing_button_edit editing_button mdl-js-button  mdl-button--colored', method: :get %>
+                  <% end %>
               </span>
             </li>
           <% i+=1 %>
