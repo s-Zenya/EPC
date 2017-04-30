@@ -2,7 +2,7 @@
 <%= form_for(@release_file) do |f| %>
 <% if @release_file.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(release_file.errors.count, "つ") %> 入力された値が間違っています:</h2>
+    <h2><%= pluralize(@release_file.errors.count, "つ") %> 入力された値が間違っています:</h2>
     <ul>
     <% @release_file.errors.full_messages.each do |message| %>
       <li><%= message %></li>

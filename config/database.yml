@@ -1,8 +1,8 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: zenya'somedatabase
+  database: epc_database
   pool: 5
-  username: zenya
-  password: 
+  username: rails
+  password: rails;
   socket: /var/run/mysqld/mysqld.sock

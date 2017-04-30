@@ -36,7 +36,7 @@ class ShareController < ApplicationController
         format.html { redirect_to '/share/create', notice: 'ファイルを公開しました' }
         format.json { redirect_to '/share/create', status: :ok, location: @release_file }
       end
-      format.html { render :index }
+      format.html { render :edit }
       format.json { render json: @release_file.errors, status: :unprocessable_entity }
     end
   end
