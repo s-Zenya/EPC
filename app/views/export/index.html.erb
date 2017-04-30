@@ -11,20 +11,20 @@
 <%= render :partial => "/partial/head" %>
 <div class="form">以下に英語とそれの日本語訳を記入し自分のフラッシュカードを作成できます<br>
 
-<% if !current_user.blank? #userが存在するかの確認 %>
-    <div class="json_to_db">
-      <label for="file" class="file">
-        <input type="file" name="file" value="" id="file">
-        <div id="JsonToDb" class="mdl-button mdl-js-button mdl-button--accent">ファイルをDBに保存</div>
-      </label>
-    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=importJson() value=決定><br><br>
+  <% if !current_user.blank? #userが存在するかの確認 %>
+      <div class="json_to_db">
+        <label for="file" class="file">
+          <input type="file" name="file" value="" id="file">
+          <div id="JsonToDb" class="mdl-button mdl-js-button mdl-button--accent">ファイルをDBに保存</div>
+        </label>
+        <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" onClick=importJson() value=決定></input><br><br>
+      </div><br>
+  <% end %>
+  <div class="mdl-textfield mdl-js-textfield export_file_name">
+    <input class="mdl-textfield__input" type="text" id="title">
+    <!-- <label class="title mdl-textfield__label" for="title">保存するタイトル名</label> -->
   </div>
-<% end %>
-<div class="mdl-textfield mdl-js-textfield export_file_name">
-  <input class="mdl-textfield__input" type="text" id="title">
-  <!-- <label class="title mdl-textfield__label" for="title">保存するタイトル名</label> -->
-</div>
-<br>
+  <br>
   <div class="mdl-textfield mdl-js-textfield">
     <textarea class="mdl-textfield__input lined" type="text" rows="25" id="english"></textarea>
     <label class="mdl-textfield__label" for="english">　　　　please write English here...</label>
