@@ -51,13 +51,11 @@ class ShareController < ApplicationController
     @userfile.user_id = session[:user_id]
     @userfile.filename = @release_file.filename
     @user = User.find_by(id: @userfile.user_id)
-    @words = Word.where(fileid: @release_file.id)
+    @words = Word.where(fileid: @release_file.userfiles_id)
   end
 
   def delete
     fileId = params[:fileId]
-    p "==============================================-"
-    p fileId
     ReleaseFile.destroy_all(['userfiles_id = :id',{id: fileId}])
     redirect_to '/share/create'
   end
