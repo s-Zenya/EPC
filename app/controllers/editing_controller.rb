@@ -9,6 +9,7 @@ class EditingController < ApplicationController
   def delete
     data = []
     fileId = params[:fileId]
+    ReleaseFile.destroy_all(['userfiles_id = :id',{id: fileId}])
     Userfile.destroy_all(['id = :id',{id: fileId}])
     Word.destroy_all(['fileid = :id',{id: fileId}])
     render :json => data
@@ -44,6 +45,11 @@ class EditingController < ApplicationController
         @words.Weak = false
         @words.save
         i += 1
+      end
+      if @ReleaseFile = ReleaseFile.where(['userfiles_id = :id',{id: id}])
+        newId=Userfile.find_by(filename:title)
+        @ReleaseFile[0].userfiles_id=newId.id
+        @ReleaseFile[0].save
       end
       render :json => data
     else
