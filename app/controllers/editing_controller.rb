@@ -46,7 +46,8 @@ class EditingController < ApplicationController
         @words.save
         i += 1
       end
-      if @ReleaseFile = ReleaseFile.where(['userfiles_id = :id',{id: id}])
+      @ReleaseFile = ReleaseFile.where(['userfiles_id = :id',{id: id}])
+      if @ReleaseFile!=[]
         newId=Userfile.find_by(filename:title)
         @ReleaseFile[0].userfiles_id=newId.id
         @ReleaseFile[0].save
