@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     get 'session/new'
   end
 
-  resources :words
-  resources :userfiles
-  resources :users
+  resources :words, :except => [:index]
+  resources :userfiles, :except => [:index]
+  resources :users, :except => [:index, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'top' => 'top#index'
