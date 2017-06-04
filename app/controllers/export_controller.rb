@@ -6,10 +6,11 @@ class ExportController < ApplicationController
     english_words = params[:english_words]
     japanese_words = params[:japanese_words]
     title = params[:title]
+    user_id = session[:user_id]
     data = []
-    if Userfile.find_by_sql(['select * from userfiles where filename = :title',{title: title}]) == []
+    if Userfile.find_by_sql(['select * from userfiles where filename = :title && user_id = :user_id',{title: title, user_id: user_id}]) == []
       @userfiles = Userfile.new;
-      @userfiles.user_id = session[:user_id]
+      @userfiles.user_id = user_id
       @userfiles.filename = title
       @userfiles.save
       i = 0
