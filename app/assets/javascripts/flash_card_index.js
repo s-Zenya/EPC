@@ -217,6 +217,24 @@ $(document).on('click','.mic',function(){
   var recognition = new webkitSpeechRecognition();
   recognition.lang = 'en';
   var correct_word = this.id;
+
+
+  //[]内の文字を全て除去
+  // var bind1=0,bind2=0;
+  // while(bind1!=-1&&bind2!=-1){
+  //   bind1=correct_word.indexOf("[");
+  //   bind2=correct_word.indexOf("]");
+  //   if(bind1!=-1&&bind2!=-1){
+  //     correct_word=correct_word.substr(0,bind1)+correct_word.substr(bind2+1,correct_word.length);
+  //   }
+  // }
+  //[]だけを除去
+  correct_word = correct_word.replace(/\[/g, "");
+  correct_word = correct_word.replace(/\]/g, "");
+  // console.dir(correct_word);
+
+
+
   //ID追加処理でバインドされた要素を複合
   re = new RegExp("qttf", "g");
   correct_word = correct_word.replace(re, "\'")

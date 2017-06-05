@@ -3,6 +3,6 @@ development:
   encoding: utf8
   database: epc_database
   pool: 5
-  username: rails
-  password: rails
+  username: zenya
+  password:
   socket: /var/run/mysqld/mysqld.sock
