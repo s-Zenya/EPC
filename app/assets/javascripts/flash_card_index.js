@@ -87,7 +87,7 @@ function findCards(filename){
     dataType: 'text',
     async: true,
     data: {
-      filename
+      filename: filename
     },
   });
   return xhr.done(function(result) {

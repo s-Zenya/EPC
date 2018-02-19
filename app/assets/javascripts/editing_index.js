@@ -6,7 +6,7 @@ function deleteCards(fileId){
     dataType: 'text',
     async: true,
     data: {
-      fileId
+      fileId: fileId
     },
   });
     return xhr.done(function(result) {
@@ -26,7 +26,7 @@ function DbToJson(fileId){
     dataType: 'text',
     async: true,
     data: {
-      fileId
+      fileId: fileId
     },
   });
     return xhr.done(function(result) {
